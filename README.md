@@ -13,10 +13,11 @@ ground truth.
 ## Status
 
 The v1 harness, 12-case paired seed corpus, and versioned `v0.17.0` CLI adapter
-are implemented. The exact release candidate is still moving, so this checkout
-publishes no product metrics and does not claim a final evaluation. The release
-suite must be rerun against the exact immutable product commit before results
-are selected for publication.
+are implemented. An exact-candidate 12-case result is now published in
+[`results/published/`](results/published/exitbind-0.17.0-candidate-20260914-9ffd-summary.md).
+Publication is the accepted evaluation milestone, not an all-pass claim; the
+result records its supported coverage, unsupported cases, mismatch, and
+limitations.
 
 The included fixture binary is only a deterministic runner/scorer self-test;
 it is not Exitbind and its output is not a product result.
