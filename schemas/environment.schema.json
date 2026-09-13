@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://veyndrasystems.github.io/exitbind-evals/schemas/environment-v1.schema.json",
+  "title": "Exitbind evaluation environment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "python", "platform", "cwd", "locale", "binary", "binary_sha256"],
+  "properties": {
+    "schema_version": {"const": "environment-v1"},
+    "started_at": {"type": "string"},
+    "python": {"type": "string"},
+    "platform": {"type": "string"},
+    "cwd": {"type": "string"},
+    "locale": {"type": "string"},
+    "child_environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["policy", "allowlist", "os_sandbox"],
+      "properties": {
+        "policy": {"const": "minimal-allowlist-v1"},
+        "allowlist": {"type": "array", "items": {"type": "string"}},
+        "os_sandbox": {"const": false}
+      }
+    },
+    "binary": {"type": "string"},
+    "binary_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "adapter_manifest": {"type": "string"},
+    "adapter_manifest_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "adapter_implementation": {"type": "string"},
+    "adapter_implementation_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "product_commit_sha": {"type": "string", "pattern": "^[a-f0-9]{40}$"},
+    "evaluator_commit_sha": {"type": "string", "pattern": "^[a-f0-9]{40}$"}
+  }
+}

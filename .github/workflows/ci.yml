@@ -1,0 +1,40 @@
+name: Exitbind Evals / Verify
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+
+      - name: Assert Python >= 3.11
+        run: |
+          python3 - <<'PY'
+          import sys
+          assert sys.version_info >= (3, 11), sys.version
+          PY
+
+      - name: Check shell syntax
+        run: bash -n scripts/reproduce.sh runners/collect-environment runners/export-public runners/run-case runners/run-suite
+
+      - name: Compile evaluator Python
+        run: python3 -m py_compile adapters/*.py runners/*.py tools/*.py tests/*.py
+
+      - name: Run evaluator tests
+        run: python3 -m unittest discover -s tests -p 'test_*.py' -v
+
+      - name: Validate evaluator data
+        run: python3 tools/validate.py
+
+      - name: harness self-test
+        run: ./scripts/reproduce.sh

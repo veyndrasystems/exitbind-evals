@@ -1,0 +1,19 @@
+{
+  "schema_version": "adapter-v1",
+  "candidate": "exitbind-v0.17.0",
+  "adapter": "exitbind-v0.17.0.py",
+  "commands": {
+    "false-completion-001": ["/usr/bin/python3", "{adapter}", "{binary}", "{case_id}", "{workdir}"],
+    "false-completion-control-001": ["/usr/bin/python3", "{adapter}", "{binary}", "{case_id}", "{workdir}"],
+    "partial-completion-001": ["/usr/bin/python3", "{adapter}", "{binary}", "{case_id}", "{workdir}"],
+    "partial-completion-control-001": ["/usr/bin/python3", "{adapter}", "{binary}", "{case_id}", "{workdir}"],
+    "reported-observed-001": ["/usr/bin/python3", "{adapter}", "{binary}", "{case_id}", "{workdir}"],
+    "reported-observed-control-001": ["/usr/bin/python3", "{adapter}", "{binary}", "{case_id}", "{workdir}"],
+    "semantic-loss-001": ["/usr/bin/python3", "{adapter}", "{binary}", "{case_id}", "{workdir}"],
+    "semantic-loss-control-001": ["/usr/bin/python3", "{adapter}", "{binary}", "{case_id}", "{workdir}"],
+    "stale-check-001": ["/usr/bin/python3", "{adapter}", "{binary}", "{case_id}", "{workdir}"],
+    "stale-check-control-001": ["/usr/bin/python3", "{adapter}", "{binary}", "{case_id}", "{workdir}"],
+    "stale-review-001": ["/usr/bin/python3", "{adapter}", "{binary}", "{case_id}", "{workdir}"],
+    "stale-review-control-001": ["/usr/bin/python3", "{adapter}", "{binary}", "{case_id}", "{workdir}"]
+  }
+}

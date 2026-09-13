@@ -1,0 +1,353 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://veyndrasystems.github.io/exitbind-evals/schemas/public-export-v2.schema.json",
+  "title": "Exitbind public evidence export",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "source_run_id", "local_raw_evidence", "artifacts", "public_evidence"],
+  "properties": {
+    "schema_version": {"const": "public-export-v2"},
+    "source_run_id": {"type": "string", "minLength": 1},
+    "local_raw_evidence": {"$ref": "#/$defs/localRawEvidence"},
+    "artifacts": {"$ref": "#/$defs/artifacts"},
+    "public_evidence": {"$ref": "#/$defs/publicEvidence"}
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "artifacts": {
+            "properties": {
+              "summary": {"properties": {"candidate_dependent": {"const": true}}}
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "artifacts": {
+            "properties": {
+                "environment": {"required": ["adapter_manifest", "adapter_manifest_sha256", "adapter_implementation", "adapter_implementation_sha256", "product_commit_sha", "evaluator_commit_sha"]}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "artifacts": {
+            "properties": {
+              "summary": {"properties": {"candidate_dependent": {"const": false}}}
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "artifacts": {
+            "properties": {
+              "environment": {
+                "not": {"anyOf": [{"required": ["adapter_manifest"]}, {"required": ["adapter_manifest_sha256"]}, {"required": ["adapter_implementation"]}, {"required": ["adapter_implementation_sha256"]}, {"required": ["product_commit_sha"]}, {"required": ["evaluator_commit_sha"]}]}
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "relativePath": {"type": "string", "pattern": "^(?=raw/)(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"},
+    "localRawEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["local_only", "contents_included", "files"],
+      "properties": {
+        "local_only": {"const": true},
+        "contents_included": {"const": false},
+        "files": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path", "sha256"],
+            "properties": {
+              "path": {"type": "string", "pattern": "^raw/"},
+              "sha256": {"$ref": "#/$defs/hash"}
+            }
+          }
+        }
+      }
+    },
+    "artifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["environment", "summary", "cases"],
+      "properties": {
+        "environment": {"$ref": "#/$defs/environment"},
+        "summary": {"$ref": "#/$defs/summary"},
+        "cases": {
+          "type": "object",
+          "additionalProperties": {"$ref": "#/$defs/caseResult"}
+        }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "python", "platform", "cwd", "locale", "binary", "binary_sha256"],
+      "properties": {
+        "schema_version": {"const": "environment-v1"},
+        "started_at": {"type": "string"},
+        "python": {"type": "string"},
+        "platform": {"type": "string"},
+        "cwd": {"type": "string"},
+        "locale": {"type": "string"},
+        "child_environment": {"$ref": "#/$defs/childEnvironment"},
+        "binary": {"type": "string"},
+        "binary_sha256": {"$ref": "#/$defs/hash"},
+        "adapter_manifest": {"type": "string"},
+        "adapter_manifest_sha256": {"$ref": "#/$defs/hash"},
+        "adapter_implementation": {"type": "string"},
+        "adapter_implementation_sha256": {"$ref": "#/$defs/hash"},
+        "product_commit_sha": {"type": "string", "pattern": "^[a-f0-9]{40}$"},
+        "evaluator_commit_sha": {"type": "string", "pattern": "^[a-f0-9]{40}$"}
+      }
+    },
+    "childEnvironment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["policy", "allowlist", "os_sandbox"],
+      "properties": {
+        "policy": {"const": "minimal-allowlist-v1"},
+        "allowlist": {"type": "array", "items": {"type": "string"}},
+        "os_sandbox": {"const": false}
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "run_id", "case_count", "candidate_dependent", "coverage", "aggregated", "environment_file", "case_result_directory"],
+      "properties": {
+        "schema_version": {"const": "summary-v1"},
+        "run_id": {"type": "string", "minLength": 1},
+        "case_count": {"type": "integer", "minimum": 0},
+        "candidate_dependent": {"type": "boolean"},
+        "coverage": {"$ref": "#/$defs/summaryCoverage"},
+        "aggregated": {"$ref": "#/$defs/aggregate"},
+        "environment_file": {"type": "string"},
+        "case_result_directory": {"type": "string"}
+      }
+    },
+    "aggregate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["false_acceptance_case_ids", "metrics", "mismatch_case_ids"],
+      "properties": {
+        "false_acceptance_case_ids": {"type": "array", "items": {"type": "string"}},
+        "mismatch_case_ids": {"type": "array", "items": {"type": "string"}},
+        "metrics": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["false_acceptance", "false_exit_rejection", "false_refusal", "holytail_false_alarms", "holytail_preservation_recall", "outcome_classification", "reason_classification", "valid_exit_acceptance"],
+          "properties": {
+            "false_acceptance": {"$ref": "#/$defs/ratio"},
+            "false_exit_rejection": {"$ref": "#/$defs/ratio"},
+            "false_refusal": {"$ref": "#/$defs/ratio"},
+            "holytail_false_alarms": {"$ref": "#/$defs/ratio"},
+            "holytail_preservation_recall": {"$ref": "#/$defs/ratio"},
+            "outcome_classification": {"$ref": "#/$defs/ratio"},
+            "reason_classification": {"$ref": "#/$defs/ratio"},
+            "valid_exit_acceptance": {"$ref": "#/$defs/ratio"}
+          }
+        }
+      }
+    },
+    "summaryCoverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["supported_exercised_case_ids", "unsupported_unexercised_case_ids"],
+      "properties": {
+        "supported_exercised_case_ids": {"type": "array", "items": {"type": "string"}},
+        "unsupported_unexercised_case_ids": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "ratio": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["numerator", "denominator", "percentage", "status"],
+      "properties": {
+        "numerator": {"type": "integer", "minimum": 0},
+        "denominator": {"type": "integer", "minimum": 0},
+        "percentage": {"type": ["number", "null"]},
+        "status": {"enum": ["computed", "not_computable"]}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"denominator": {"const": 0}}},
+          "then": {
+            "properties": {
+              "percentage": {"type": "null"},
+              "status": {"const": "not_computable"}
+            }
+          }
+        },
+        {
+          "if": {"properties": {"denominator": {"minimum": 1}}},
+          "then": {
+            "properties": {
+              "percentage": {"type": "number", "minimum": 0, "maximum": 100},
+              "status": {"const": "computed"}
+            }
+          }
+        }
+      ]
+    },
+    "caseResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "run_id", "case_id", "expected", "observed", "classification", "coverage", "command", "local_raw"],
+      "properties": {
+        "schema_version": {"const": "result-v1"},
+        "run_id": {"type": "string", "minLength": 1},
+        "case_id": {"type": "string", "minLength": 1},
+        "expected": {"$ref": "#/$defs/expected"},
+        "observed": {"$ref": "#/$defs/observed"},
+        "classification": {"$ref": "#/$defs/classification"},
+        "coverage": {"$ref": "#/$defs/coverage"},
+        "command": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "local_raw": {"$ref": "#/$defs/localRaw"}
+      }
+    },
+    "expected": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["outcome", "reason", "exit_code", "holytail"],
+      "properties": {
+        "outcome": {"enum": ["READY", "REFUSED", "BLOCKED"]},
+        "reason": {"type": "string"},
+        "exit_code": {"type": "integer"},
+        "holytail": {"enum": ["LOSS", "PRESERVED", "NOT_APPLICABLE"]}
+      }
+    },
+    "observed": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["outcome", "reason", "exit_code", "timed_out", "json_parse_error", "holytail", "duration_ms"],
+      "properties": {
+        "outcome": {"enum": ["READY", "REFUSED", "BLOCKED", null]},
+        "reason": {"type": ["string", "null"]},
+        "exit_code": {"type": ["integer", "null"]},
+        "timed_out": {"type": "boolean"},
+        "json_parse_error": {"type": ["string", "null"]},
+        "holytail": {"enum": ["LOSS", "PRESERVED", "NOT_APPLICABLE", null]},
+        "duration_ms": {"type": "number", "minimum": 0}
+      }
+    },
+    "classification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["outcome_match", "reason_match", "exit_code_match", "holytail_match"],
+      "properties": {
+        "outcome_match": {"type": "boolean"},
+        "reason_match": {"type": "boolean"},
+        "exit_code_match": {"type": "boolean"},
+        "holytail_match": {"type": ["boolean", "null"]}
+      }
+    },
+    "localRaw": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stdout_path", "stderr_path", "stdout_sha256", "stderr_sha256"],
+      "properties": {
+        "stdout_path": {"$ref": "#/$defs/relativePath"},
+        "stderr_path": {"$ref": "#/$defs/relativePath"},
+        "stdout_sha256": {"$ref": "#/$defs/hash"},
+        "stderr_sha256": {"$ref": "#/$defs/hash"}
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["support", "status"],
+      "properties": {
+        "support": {"enum": ["supported", "unsupported"]},
+        "status": {"enum": ["exercised", "unexercised"]}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"support": {"const": "supported"}}},
+          "then": {"properties": {"status": {"const": "exercised"}}}
+        },
+        {
+          "if": {"properties": {"support": {"const": "unsupported"}}},
+          "then": {"properties": {"status": {"const": "unexercised"}}}
+        }
+      ]
+    },
+    "publicEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["redaction_policy", "cases"],
+      "properties": {
+        "redaction_policy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["algorithm", "scans_for_arbitrary_secrets"],
+          "properties": {
+            "algorithm": {"const": "absolute-path-v1"},
+            "scans_for_arbitrary_secrets": {"const": false}
+          }
+        },
+        "cases": {
+          "type": "object",
+          "additionalProperties": {"$ref": "#/$defs/streams"}
+        }
+      }
+    },
+    "streams": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stdout", "stderr"],
+      "properties": {
+        "stdout": {"$ref": "#/$defs/publicStream"},
+        "stderr": {"$ref": "#/$defs/publicStream"}
+      }
+    },
+    "publicStream": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["content", "encoding", "original_sha256", "sanitized_sha256", "source_local_raw", "redaction"],
+      "properties": {
+        "content": {"type": "string"},
+        "encoding": {"const": "utf-8"},
+        "original_sha256": {"$ref": "#/$defs/hash"},
+        "sanitized_sha256": {"$ref": "#/$defs/hash"},
+        "source_local_raw": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["path", "sha256", "result_sha256"],
+          "properties": {
+            "path": {"$ref": "#/$defs/relativePath"},
+            "sha256": {"$ref": "#/$defs/hash"},
+            "result_sha256": {"$ref": "#/$defs/hash"}
+          }
+        },
+        "redaction": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["algorithm", "applied", "replacements", "scans_for_arbitrary_secrets", "encoded_originals_omitted", "product_streams_omitted"],
+          "properties": {
+            "algorithm": {"const": "absolute-path-v1"},
+            "applied": {"type": "boolean"},
+            "replacements": {"type": "integer", "minimum": 0},
+            "scans_for_arbitrary_secrets": {"const": false},
+            "encoded_originals_omitted": {"type": "boolean"},
+            "product_streams_omitted": {"type": "boolean"}
+          }
+        }
+      }
+    }
+  }
+}

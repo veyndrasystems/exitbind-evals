@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+results/runs/
+results/published/*.json
+results/published/*.jsonl
+corpus/cache/
+adapters/candidate-*.json

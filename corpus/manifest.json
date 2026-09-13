@@ -1,0 +1,36 @@
+{
+  "schema_version": "manifest-v1",
+  "name": "exitbind-acceptance-integrity-v1",
+  "status": "metadata-only",
+  "repositories": [
+    {
+      "id": "ripgrep",
+      "url": "https://github.com/BurntSushi/ripgrep",
+      "commit": "3fce3b5bb0236da2df6d99672afb8a719642eca7",
+      "license_url": "https://github.com/BurntSushi/ripgrep/blob/3fce3b5bb0236da2df6d99672afb8a719642eca7/LICENSE-MIT",
+      "fetch_verification": "2026-09-13: git ls-remote https://github.com/BurntSushi/ripgrep.git refs/heads/master returned the pinned commit"
+    },
+    {
+      "id": "bat",
+      "url": "https://github.com/sharkdp/bat",
+      "commit": "7323a7514f7601737640e7172be115127d6db08c",
+      "license_url": "https://github.com/sharkdp/bat/blob/7323a7514f7601737640e7172be115127d6db08c/LICENSE-MIT",
+      "fetch_verification": "2026-09-13: git ls-remote https://github.com/sharkdp/bat.git refs/heads/master returned the pinned commit"
+    },
+    {
+      "id": "serde",
+      "url": "https://github.com/serde-rs/serde",
+      "commit": "a874a1b1bb1cc16cf5ee3b1b7b527af5705742bb",
+      "license_url": "https://github.com/serde-rs/serde/blob/a874a1b1bb1cc16cf5ee3b1b7b527af5705742bb/LICENSE-MIT",
+      "fetch_verification": "2026-09-13: git ls-remote https://github.com/serde-rs/serde.git refs/heads/master returned the pinned commit"
+    }
+  ],
+  "cases": [
+    "cases/false-completion-001.json", "cases/false-completion-control-001.json",
+    "cases/stale-check-001.json", "cases/stale-check-control-001.json",
+    "cases/semantic-loss-001.json", "cases/semantic-loss-control-001.json",
+    "cases/stale-review-001.json", "cases/stale-review-control-001.json",
+    "cases/reported-observed-001.json", "cases/reported-observed-control-001.json",
+    "cases/partial-completion-001.json", "cases/partial-completion-control-001.json"
+  ]
+}

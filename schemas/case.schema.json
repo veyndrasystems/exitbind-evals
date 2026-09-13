@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://veyndrasystems.github.io/exitbind-evals/schemas/case-v1.schema.json",
+  "title": "Exitbind Acceptance Integrity case",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "pair_id", "family", "title", "scenario", "ground_truth"],
+  "properties": {
+    "schema_version": {"const": "case-v1"},
+    "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]+$"},
+    "pair_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]+$"},
+    "family": {"enum": ["false-completion", "stale-check", "semantic-loss", "stale-review", "reported-vs-observed", "partial-completion", "valid-control"]},
+    "title": {"type": "string", "minLength": 1},
+    "repository": {"type": "string"},
+    "scenario": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fault", "accepted_invariants", "execution"],
+      "properties": {
+        "fault": {"type": "string", "minLength": 1},
+        "accepted_invariants": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1},
+        "execution": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["mode", "argv"],
+          "properties": {
+            "mode": {"enum": ["fixture", "candidate-adapter"]},
+            "argv": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+          }
+        }
+      }
+    },
+    "ground_truth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method", "expected_outcome", "expected_reason", "expected_exit_code", "holytail_expected"],
+      "properties": {
+        "method": {"type": "string", "minLength": 1},
+        "expected_outcome": {"enum": ["READY", "REFUSED", "BLOCKED"]},
+        "expected_reason": {"type": "string", "minLength": 1},
+        "expected_exit_code": {"type": "integer", "minimum": 0, "maximum": 255},
+        "holytail_expected": {"enum": ["LOSS", "PRESERVED", "NOT_APPLICABLE"]}
+      }
+    }
+  }
+}
