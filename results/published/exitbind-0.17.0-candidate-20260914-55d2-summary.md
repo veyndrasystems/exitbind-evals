@@ -1,17 +1,18 @@
-# Exitbind v0.17.0 candidate evaluation
+# Exitbind v0.17.0 final-candidate evaluation
 
-This is the exact-candidate v1 publication for the 12-case black-box run. The
-machine-readable, path-sanitized result is [`exitbind-0.17.0-candidate-20260914-9ffd.json`](exitbind-0.17.0-candidate-20260914-9ffd-a5b3.json).
+This is the exact final-product v1 publication for the 12-case black-box run.
+The machine-readable, path-sanitized result is
+[`exitbind-0.17.0-candidate-20260914-55d2-a5b3.json`](exitbind-0.17.0-candidate-20260914-55d2-a5b3.json).
 
 ## Identity
 
-- Run: `exitbind-0.17.0-candidate-20260914-9ffd-a5b3`
-- Product commit: `9ffd135947c8236046b5b2128b03caf95e5e2987`
+- Run: `exitbind-0.17.0-candidate-20260914-55d2-a5b3`
+- Product commit: `55d2c9705df51e8dcfd15b60a65255db64bc1dbb`
 - Evaluator commit: `a5b3ca3a06407fbdf64b214dfe16f615388d8af1`
-- Binary SHA-256: `9b94df0ccb59cc285b972d27d3ea6a7b4a80a4ae706403498e4f09dc1548ae98`
+- Binary SHA-256: `fc854ed59ba3a7f0d7eaf1b6006c01a69708edab1355e6227ef2c82496ce2711`
 - Adapter manifest SHA-256: `92914a10ee4c1d3a5511ae97edd2d8215e7cd39a022937e3746e02023aeedaff`
 - Adapter implementation SHA-256: `46c29a501067b6f610bcd0d5ae1b9b3d8dc50fd37402597e8278665ae3131268`
-- Public JSON SHA-256: `7c92326b73349cd693e5192f54192741bf855b3294a0d78ceaeb2162a077a1b3`
+- Public JSON SHA-256: `60ef26a79c99eec14f73af3416506b26be5d86e36b0cebb6ad41c257ebb0e7eb`
 
 ## Observed result
 

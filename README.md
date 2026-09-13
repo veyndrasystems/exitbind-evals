@@ -14,7 +14,7 @@ ground truth.
 
 The v1 harness, 12-case paired seed corpus, and versioned `v0.17.0` CLI adapter
 are implemented. An exact-candidate 12-case result is now published in
-[`results/published/`](results/published/exitbind-0.17.0-candidate-20260914-9ffd-summary.md).
+[`results/published/`](results/published/exitbind-0.17.0-candidate-20260914-55d2-summary.md).
 Publication is the accepted evaluation milestone, not an all-pass claim; the
 result records its supported coverage, unsupported cases, mismatch, and
 limitations.

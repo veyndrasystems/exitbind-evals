@@ -1,0 +1,1224 @@
+{
+  "artifacts": {
+    "cases": {
+      "false-completion-001": {
+        "case_id": "false-completion-001",
+        "classification": {
+          "exit_code_match": true,
+          "holytail_match": null,
+          "outcome_match": true,
+          "reason_match": true
+        },
+        "command": [
+          "<redacted-absolute-path:31f2aee4e71d21fbe5cf8b01ff0e069b9275f58929596ceb00d14d90e3e16cd6>",
+          "<redacted-absolute-path:a4b433124014c50037290790c9659f145def68c410a893e0dc5bf5db1960e275>",
+          "<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>",
+          "false-completion-001",
+          "<redacted-absolute-path:49b2d131f5e604ba6cfa1e7e8ce60b75340f041556d9f759d53e2c4146049d3c>"
+        ],
+        "coverage": {
+          "status": "exercised",
+          "support": "supported"
+        },
+        "expected": {
+          "exit_code": 2,
+          "holytail": "NOT_APPLICABLE",
+          "outcome": "REFUSED",
+          "reason": "CHECK_FAILED"
+        },
+        "local_raw": {
+          "stderr_path": "raw/false-completion-001.stderr",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_path": "raw/false-completion-001.stdout",
+          "stdout_sha256": "a498f6d57c0fcf913f66e443017cb255f4582252182bd67bca84964ebf661dad"
+        },
+        "observed": {
+          "duration_ms": 526.264,
+          "exit_code": 2,
+          "holytail": "NOT_APPLICABLE",
+          "json_parse_error": null,
+          "outcome": "REFUSED",
+          "reason": "CHECK_FAILED",
+          "timed_out": false
+        },
+        "run_id": "exitbind-0.17.0-candidate-20260914-55d2-a5b3",
+        "schema_version": "result-v1"
+      },
+      "false-completion-control-001": {
+        "case_id": "false-completion-control-001",
+        "classification": {
+          "exit_code_match": true,
+          "holytail_match": null,
+          "outcome_match": true,
+          "reason_match": true
+        },
+        "command": [
+          "<redacted-absolute-path:31f2aee4e71d21fbe5cf8b01ff0e069b9275f58929596ceb00d14d90e3e16cd6>",
+          "<redacted-absolute-path:a4b433124014c50037290790c9659f145def68c410a893e0dc5bf5db1960e275>",
+          "<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>",
+          "false-completion-control-001",
+          "<redacted-absolute-path:826636dea6a6c3cbe7001afc29c9b3a7803bc5b87ad49fb9601d4d02de586856>"
+        ],
+        "coverage": {
+          "status": "exercised",
+          "support": "supported"
+        },
+        "expected": {
+          "exit_code": 0,
+          "holytail": "NOT_APPLICABLE",
+          "outcome": "READY",
+          "reason": "ACCEPTED"
+        },
+        "local_raw": {
+          "stderr_path": "raw/false-completion-control-001.stderr",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_path": "raw/false-completion-control-001.stdout",
+          "stdout_sha256": "e7de722dcdb50af33f993ca3408eea6fca1d45d7d2a5f58fc3dcbc158aa77c3a"
+        },
+        "observed": {
+          "duration_ms": 413.789,
+          "exit_code": 0,
+          "holytail": "NOT_APPLICABLE",
+          "json_parse_error": null,
+          "outcome": "READY",
+          "reason": "ACCEPTED",
+          "timed_out": false
+        },
+        "run_id": "exitbind-0.17.0-candidate-20260914-55d2-a5b3",
+        "schema_version": "result-v1"
+      },
+      "partial-completion-001": {
+        "case_id": "partial-completion-001",
+        "classification": {
+          "exit_code_match": false,
+          "holytail_match": null,
+          "outcome_match": false,
+          "reason_match": false
+        },
+        "command": [
+          "<redacted-absolute-path:31f2aee4e71d21fbe5cf8b01ff0e069b9275f58929596ceb00d14d90e3e16cd6>",
+          "<redacted-absolute-path:a4b433124014c50037290790c9659f145def68c410a893e0dc5bf5db1960e275>",
+          "<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>",
+          "partial-completion-001",
+          "<redacted-absolute-path:3c8ef4cd8f013bc4308395ae653344d51d536eabf6544cf83bdb8ebc6be02442>"
+        ],
+        "coverage": {
+          "status": "unexercised",
+          "support": "unsupported"
+        },
+        "expected": {
+          "exit_code": 2,
+          "holytail": "NOT_APPLICABLE",
+          "outcome": "REFUSED",
+          "reason": "PARTIAL_COMPLETION"
+        },
+        "local_raw": {
+          "stderr_path": "raw/partial-completion-001.stderr",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_path": "raw/partial-completion-001.stdout",
+          "stdout_sha256": "20749323b9d2349d7d35099e0bfa19249ef862f18ef47744bd150f4d001d6542"
+        },
+        "observed": {
+          "duration_ms": 430.684,
+          "exit_code": 0,
+          "holytail": "NOT_APPLICABLE",
+          "json_parse_error": null,
+          "outcome": "READY",
+          "reason": "ACCEPTED",
+          "timed_out": false
+        },
+        "run_id": "exitbind-0.17.0-candidate-20260914-55d2-a5b3",
+        "schema_version": "result-v1"
+      },
+      "partial-completion-control-001": {
+        "case_id": "partial-completion-control-001",
+        "classification": {
+          "exit_code_match": true,
+          "holytail_match": true,
+          "outcome_match": true,
+          "reason_match": true
+        },
+        "command": [
+          "<redacted-absolute-path:31f2aee4e71d21fbe5cf8b01ff0e069b9275f58929596ceb00d14d90e3e16cd6>",
+          "<redacted-absolute-path:a4b433124014c50037290790c9659f145def68c410a893e0dc5bf5db1960e275>",
+          "<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>",
+          "partial-completion-control-001",
+          "<redacted-absolute-path:0f453f6fd54e871c97814978de79ad3a025b20571f5874e5afbad41119a79d2f>"
+        ],
+        "coverage": {
+          "status": "exercised",
+          "support": "supported"
+        },
+        "expected": {
+          "exit_code": 0,
+          "holytail": "PRESERVED",
+          "outcome": "READY",
+          "reason": "ACCEPTED"
+        },
+        "local_raw": {
+          "stderr_path": "raw/partial-completion-control-001.stderr",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_path": "raw/partial-completion-control-001.stdout",
+          "stdout_sha256": "74640fc7ec1296adc8c4be3ba7ead809151b1b38b384606e69e133deb5dd6390"
+        },
+        "observed": {
+          "duration_ms": 434.901,
+          "exit_code": 0,
+          "holytail": "PRESERVED",
+          "json_parse_error": null,
+          "outcome": "READY",
+          "reason": "ACCEPTED",
+          "timed_out": false
+        },
+        "run_id": "exitbind-0.17.0-candidate-20260914-55d2-a5b3",
+        "schema_version": "result-v1"
+      },
+      "reported-observed-001": {
+        "case_id": "reported-observed-001",
+        "classification": {
+          "exit_code_match": false,
+          "holytail_match": null,
+          "outcome_match": false,
+          "reason_match": false
+        },
+        "command": [
+          "<redacted-absolute-path:31f2aee4e71d21fbe5cf8b01ff0e069b9275f58929596ceb00d14d90e3e16cd6>",
+          "<redacted-absolute-path:a4b433124014c50037290790c9659f145def68c410a893e0dc5bf5db1960e275>",
+          "<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>",
+          "reported-observed-001",
+          "<redacted-absolute-path:bde8cba73ae20ae9ff728390fcf057a7c94aba38587c43034dd6144bbd410d19>"
+        ],
+        "coverage": {
+          "status": "exercised",
+          "support": "supported"
+        },
+        "expected": {
+          "exit_code": 3,
+          "holytail": "NOT_APPLICABLE",
+          "outcome": "BLOCKED",
+          "reason": "OBSERVATION_MISSING"
+        },
+        "local_raw": {
+          "stderr_path": "raw/reported-observed-001.stderr",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_path": "raw/reported-observed-001.stdout",
+          "stdout_sha256": "22eb5325180faeef578facf563b762c116b62b7cea5b317f67a732c917f76a0d"
+        },
+        "observed": {
+          "duration_ms": 450.304,
+          "exit_code": 0,
+          "holytail": "NOT_APPLICABLE",
+          "json_parse_error": null,
+          "outcome": "READY",
+          "reason": "ACCEPTED",
+          "timed_out": false
+        },
+        "run_id": "exitbind-0.17.0-candidate-20260914-55d2-a5b3",
+        "schema_version": "result-v1"
+      },
+      "reported-observed-control-001": {
+        "case_id": "reported-observed-control-001",
+        "classification": {
+          "exit_code_match": true,
+          "holytail_match": null,
+          "outcome_match": true,
+          "reason_match": true
+        },
+        "command": [
+          "<redacted-absolute-path:31f2aee4e71d21fbe5cf8b01ff0e069b9275f58929596ceb00d14d90e3e16cd6>",
+          "<redacted-absolute-path:a4b433124014c50037290790c9659f145def68c410a893e0dc5bf5db1960e275>",
+          "<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>",
+          "reported-observed-control-001",
+          "<redacted-absolute-path:f6d64e5822a7d0b48803a7ffe61ff98a0b13ad0f538531047e7093fd19626ce9>"
+        ],
+        "coverage": {
+          "status": "exercised",
+          "support": "supported"
+        },
+        "expected": {
+          "exit_code": 0,
+          "holytail": "NOT_APPLICABLE",
+          "outcome": "READY",
+          "reason": "ACCEPTED"
+        },
+        "local_raw": {
+          "stderr_path": "raw/reported-observed-control-001.stderr",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_path": "raw/reported-observed-control-001.stdout",
+          "stdout_sha256": "6a412acd2a9c603a77a275437bf5e95e1a88ce2800a69bc7483cd762a44d11c2"
+        },
+        "observed": {
+          "duration_ms": 471.341,
+          "exit_code": 0,
+          "holytail": "NOT_APPLICABLE",
+          "json_parse_error": null,
+          "outcome": "READY",
+          "reason": "ACCEPTED",
+          "timed_out": false
+        },
+        "run_id": "exitbind-0.17.0-candidate-20260914-55d2-a5b3",
+        "schema_version": "result-v1"
+      },
+      "semantic-loss-001": {
+        "case_id": "semantic-loss-001",
+        "classification": {
+          "exit_code_match": false,
+          "holytail_match": false,
+          "outcome_match": false,
+          "reason_match": false
+        },
+        "command": [
+          "<redacted-absolute-path:31f2aee4e71d21fbe5cf8b01ff0e069b9275f58929596ceb00d14d90e3e16cd6>",
+          "<redacted-absolute-path:a4b433124014c50037290790c9659f145def68c410a893e0dc5bf5db1960e275>",
+          "<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>",
+          "semantic-loss-001",
+          "<redacted-absolute-path:f27bead3acd35513f4f867e3a55b4e12006cfcebb670472a1e5a3c32aab5121b>"
+        ],
+        "coverage": {
+          "status": "unexercised",
+          "support": "unsupported"
+        },
+        "expected": {
+          "exit_code": 2,
+          "holytail": "LOSS",
+          "outcome": "REFUSED",
+          "reason": "SEMANTIC_INVARIANT_LOST"
+        },
+        "local_raw": {
+          "stderr_path": "raw/semantic-loss-001.stderr",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_path": "raw/semantic-loss-001.stdout",
+          "stdout_sha256": "9177a596b43615134fbcc9d1e91397e87e10375c6743dcea724641e6de7a86b8"
+        },
+        "observed": {
+          "duration_ms": 437.284,
+          "exit_code": 0,
+          "holytail": "NOT_APPLICABLE",
+          "json_parse_error": null,
+          "outcome": "READY",
+          "reason": "ACCEPTED",
+          "timed_out": false
+        },
+        "run_id": "exitbind-0.17.0-candidate-20260914-55d2-a5b3",
+        "schema_version": "result-v1"
+      },
+      "semantic-loss-control-001": {
+        "case_id": "semantic-loss-control-001",
+        "classification": {
+          "exit_code_match": true,
+          "holytail_match": true,
+          "outcome_match": true,
+          "reason_match": true
+        },
+        "command": [
+          "<redacted-absolute-path:31f2aee4e71d21fbe5cf8b01ff0e069b9275f58929596ceb00d14d90e3e16cd6>",
+          "<redacted-absolute-path:a4b433124014c50037290790c9659f145def68c410a893e0dc5bf5db1960e275>",
+          "<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>",
+          "semantic-loss-control-001",
+          "<redacted-absolute-path:6d7862704d2f6e06533b742958f5b902f643ff5500b26b2a655910a970aa4a79>"
+        ],
+        "coverage": {
+          "status": "exercised",
+          "support": "supported"
+        },
+        "expected": {
+          "exit_code": 0,
+          "holytail": "PRESERVED",
+          "outcome": "READY",
+          "reason": "ACCEPTED"
+        },
+        "local_raw": {
+          "stderr_path": "raw/semantic-loss-control-001.stderr",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_path": "raw/semantic-loss-control-001.stdout",
+          "stdout_sha256": "0347924977b31115c8f1ae7179b7c3a527b72e63abb749d215d1e9949548ba0e"
+        },
+        "observed": {
+          "duration_ms": 445.588,
+          "exit_code": 0,
+          "holytail": "PRESERVED",
+          "json_parse_error": null,
+          "outcome": "READY",
+          "reason": "ACCEPTED",
+          "timed_out": false
+        },
+        "run_id": "exitbind-0.17.0-candidate-20260914-55d2-a5b3",
+        "schema_version": "result-v1"
+      },
+      "stale-check-001": {
+        "case_id": "stale-check-001",
+        "classification": {
+          "exit_code_match": false,
+          "holytail_match": null,
+          "outcome_match": false,
+          "reason_match": false
+        },
+        "command": [
+          "<redacted-absolute-path:31f2aee4e71d21fbe5cf8b01ff0e069b9275f58929596ceb00d14d90e3e16cd6>",
+          "<redacted-absolute-path:a4b433124014c50037290790c9659f145def68c410a893e0dc5bf5db1960e275>",
+          "<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>",
+          "stale-check-001",
+          "<redacted-absolute-path:449d08f7ce6f9f5a21282e2b27dc75dea44511923e3d152a4b559936fee8bea4>"
+        ],
+        "coverage": {
+          "status": "unexercised",
+          "support": "unsupported"
+        },
+        "expected": {
+          "exit_code": 2,
+          "holytail": "NOT_APPLICABLE",
+          "outcome": "REFUSED",
+          "reason": "CHECK_SUBJECT_STALE"
+        },
+        "local_raw": {
+          "stderr_path": "raw/stale-check-001.stderr",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_path": "raw/stale-check-001.stdout",
+          "stdout_sha256": "79d89eb3ea6ddbf028d7a49e584243a169c9c5b46824949af6badcf736128b6e"
+        },
+        "observed": {
+          "duration_ms": 452.493,
+          "exit_code": 3,
+          "holytail": "NOT_APPLICABLE",
+          "json_parse_error": null,
+          "outcome": "BLOCKED",
+          "reason": "ADAPTER_UNSUPPORTED",
+          "timed_out": false
+        },
+        "run_id": "exitbind-0.17.0-candidate-20260914-55d2-a5b3",
+        "schema_version": "result-v1"
+      },
+      "stale-check-control-001": {
+        "case_id": "stale-check-control-001",
+        "classification": {
+          "exit_code_match": true,
+          "holytail_match": null,
+          "outcome_match": true,
+          "reason_match": true
+        },
+        "command": [
+          "<redacted-absolute-path:31f2aee4e71d21fbe5cf8b01ff0e069b9275f58929596ceb00d14d90e3e16cd6>",
+          "<redacted-absolute-path:a4b433124014c50037290790c9659f145def68c410a893e0dc5bf5db1960e275>",
+          "<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>",
+          "stale-check-control-001",
+          "<redacted-absolute-path:4f5e7a3a31b7c49e8e22bcfd30a5268e1cae6d46b41333581ce3113e8005bb45>"
+        ],
+        "coverage": {
+          "status": "exercised",
+          "support": "supported"
+        },
+        "expected": {
+          "exit_code": 0,
+          "holytail": "NOT_APPLICABLE",
+          "outcome": "READY",
+          "reason": "ACCEPTED"
+        },
+        "local_raw": {
+          "stderr_path": "raw/stale-check-control-001.stderr",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_path": "raw/stale-check-control-001.stdout",
+          "stdout_sha256": "d9c52235ce7c174cb58865751a2aef29810ff30262f9692c677cabb653b94fa8"
+        },
+        "observed": {
+          "duration_ms": 397.977,
+          "exit_code": 0,
+          "holytail": "NOT_APPLICABLE",
+          "json_parse_error": null,
+          "outcome": "READY",
+          "reason": "ACCEPTED",
+          "timed_out": false
+        },
+        "run_id": "exitbind-0.17.0-candidate-20260914-55d2-a5b3",
+        "schema_version": "result-v1"
+      },
+      "stale-review-001": {
+        "case_id": "stale-review-001",
+        "classification": {
+          "exit_code_match": false,
+          "holytail_match": null,
+          "outcome_match": false,
+          "reason_match": false
+        },
+        "command": [
+          "<redacted-absolute-path:31f2aee4e71d21fbe5cf8b01ff0e069b9275f58929596ceb00d14d90e3e16cd6>",
+          "<redacted-absolute-path:a4b433124014c50037290790c9659f145def68c410a893e0dc5bf5db1960e275>",
+          "<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>",
+          "stale-review-001",
+          "<redacted-absolute-path:643534941b811ee133dd8b5c3767ad89b7a6da715a833acd1d965e41998a0b65>"
+        ],
+        "coverage": {
+          "status": "unexercised",
+          "support": "unsupported"
+        },
+        "expected": {
+          "exit_code": 2,
+          "holytail": "NOT_APPLICABLE",
+          "outcome": "REFUSED",
+          "reason": "REVIEW_SUBJECT_STALE"
+        },
+        "local_raw": {
+          "stderr_path": "raw/stale-review-001.stderr",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_path": "raw/stale-review-001.stdout",
+          "stdout_sha256": "6a6d23166b21c73aa8d0603880035fd312024889dc69ea25275a2d0a3831b792"
+        },
+        "observed": {
+          "duration_ms": 763.307,
+          "exit_code": 3,
+          "holytail": "NOT_APPLICABLE",
+          "json_parse_error": null,
+          "outcome": "BLOCKED",
+          "reason": "ADAPTER_UNSUPPORTED",
+          "timed_out": false
+        },
+        "run_id": "exitbind-0.17.0-candidate-20260914-55d2-a5b3",
+        "schema_version": "result-v1"
+      },
+      "stale-review-control-001": {
+        "case_id": "stale-review-control-001",
+        "classification": {
+          "exit_code_match": true,
+          "holytail_match": null,
+          "outcome_match": true,
+          "reason_match": true
+        },
+        "command": [
+          "<redacted-absolute-path:31f2aee4e71d21fbe5cf8b01ff0e069b9275f58929596ceb00d14d90e3e16cd6>",
+          "<redacted-absolute-path:a4b433124014c50037290790c9659f145def68c410a893e0dc5bf5db1960e275>",
+          "<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>",
+          "stale-review-control-001",
+          "<redacted-absolute-path:257c2b729a457d4a3ab522bb909945045e9c727df0c60aea34f66ced4960976f>"
+        ],
+        "coverage": {
+          "status": "exercised",
+          "support": "supported"
+        },
+        "expected": {
+          "exit_code": 0,
+          "holytail": "NOT_APPLICABLE",
+          "outcome": "READY",
+          "reason": "ACCEPTED"
+        },
+        "local_raw": {
+          "stderr_path": "raw/stale-review-control-001.stderr",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_path": "raw/stale-review-control-001.stdout",
+          "stdout_sha256": "9e7269263d01839695f0bc06f3b1ebb3878d27a3f4ab2c1f5a416cc1f7e4e5b2"
+        },
+        "observed": {
+          "duration_ms": 467.799,
+          "exit_code": 0,
+          "holytail": "NOT_APPLICABLE",
+          "json_parse_error": null,
+          "outcome": "READY",
+          "reason": "ACCEPTED",
+          "timed_out": false
+        },
+        "run_id": "exitbind-0.17.0-candidate-20260914-55d2-a5b3",
+        "schema_version": "result-v1"
+      }
+    },
+    "environment": {
+      "adapter_implementation": "<redacted-absolute-path:a4b433124014c50037290790c9659f145def68c410a893e0dc5bf5db1960e275>",
+      "adapter_implementation_sha256": "46c29a501067b6f610bcd0d5ae1b9b3d8dc50fd37402597e8278665ae3131268",
+      "adapter_manifest": "<redacted-absolute-path:ad6aa1c622a1d387665920c2628fee997be3ca452d012d0068f1db7e786ad3d9>",
+      "adapter_manifest_sha256": "92914a10ee4c1d3a5511ae97edd2d8215e7cd39a022937e3746e02023aeedaff",
+      "binary": "<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>",
+      "binary_sha256": "fc854ed59ba3a7f0d7eaf1b6006c01a69708edab1355e6227ef2c82496ce2711",
+      "child_environment": {
+        "allowlist": [
+          "PATH",
+          "LANG",
+          "LC_ALL",
+          "TZ"
+        ],
+        "os_sandbox": false,
+        "policy": "minimal-allowlist-v1"
+      },
+      "cwd": "<redacted-absolute-path:6fca3ccb1439c59ce0be0d1ee63904544fdf3aae5fe5f2840a771ec23ab9cc0d>",
+      "evaluator_commit_sha": "a5b3ca3a06407fbdf64b214dfe16f615388d8af1",
+      "locale": "C.UTF-8",
+      "platform": "linux",
+      "product_commit_sha": "55d2c9705df51e8dcfd15b60a65255db64bc1dbb",
+      "python": "3.12.3",
+      "schema_version": "environment-v1",
+      "started_at": "2026-09-13T17:12:47.386941+00:00"
+    },
+    "summary": {
+      "aggregated": {
+        "false_acceptance_case_ids": [
+          "reported-observed-001"
+        ],
+        "metrics": {
+          "false_acceptance": {
+            "denominator": 2,
+            "numerator": 1,
+            "percentage": 50.0,
+            "status": "computed"
+          },
+          "false_exit_rejection": {
+            "denominator": 2,
+            "numerator": 1,
+            "percentage": 50.0,
+            "status": "computed"
+          },
+          "false_refusal": {
+            "denominator": 6,
+            "numerator": 0,
+            "percentage": 0.0,
+            "status": "computed"
+          },
+          "holytail_false_alarms": {
+            "denominator": 2,
+            "numerator": 0,
+            "percentage": 0.0,
+            "status": "computed"
+          },
+          "holytail_preservation_recall": {
+            "denominator": 0,
+            "numerator": 0,
+            "percentage": null,
+            "status": "not_computable"
+          },
+          "outcome_classification": {
+            "denominator": 8,
+            "numerator": 7,
+            "percentage": 87.5,
+            "status": "computed"
+          },
+          "reason_classification": {
+            "denominator": 8,
+            "numerator": 7,
+            "percentage": 87.5,
+            "status": "computed"
+          },
+          "valid_exit_acceptance": {
+            "denominator": 6,
+            "numerator": 6,
+            "percentage": 100.0,
+            "status": "computed"
+          }
+        },
+        "mismatch_case_ids": [
+          "reported-observed-001"
+        ]
+      },
+      "candidate_dependent": true,
+      "case_count": 12,
+      "case_result_directory": "cases",
+      "coverage": {
+        "supported_exercised_case_ids": [
+          "false-completion-001",
+          "false-completion-control-001",
+          "partial-completion-control-001",
+          "reported-observed-001",
+          "reported-observed-control-001",
+          "semantic-loss-control-001",
+          "stale-check-control-001",
+          "stale-review-control-001"
+        ],
+        "unsupported_unexercised_case_ids": [
+          "partial-completion-001",
+          "semantic-loss-001",
+          "stale-check-001",
+          "stale-review-001"
+        ]
+      },
+      "environment_file": "environment.json",
+      "run_id": "exitbind-0.17.0-candidate-20260914-55d2-a5b3",
+      "schema_version": "summary-v1"
+    }
+  },
+  "local_raw_evidence": {
+    "contents_included": false,
+    "files": [
+      {
+        "path": "raw/false-completion-001.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "raw/false-completion-001.stdout",
+        "sha256": "a498f6d57c0fcf913f66e443017cb255f4582252182bd67bca84964ebf661dad"
+      },
+      {
+        "path": "raw/false-completion-control-001.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "raw/false-completion-control-001.stdout",
+        "sha256": "e7de722dcdb50af33f993ca3408eea6fca1d45d7d2a5f58fc3dcbc158aa77c3a"
+      },
+      {
+        "path": "raw/partial-completion-001.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "raw/partial-completion-001.stdout",
+        "sha256": "20749323b9d2349d7d35099e0bfa19249ef862f18ef47744bd150f4d001d6542"
+      },
+      {
+        "path": "raw/partial-completion-control-001.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "raw/partial-completion-control-001.stdout",
+        "sha256": "74640fc7ec1296adc8c4be3ba7ead809151b1b38b384606e69e133deb5dd6390"
+      },
+      {
+        "path": "raw/reported-observed-001.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "raw/reported-observed-001.stdout",
+        "sha256": "22eb5325180faeef578facf563b762c116b62b7cea5b317f67a732c917f76a0d"
+      },
+      {
+        "path": "raw/reported-observed-control-001.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "raw/reported-observed-control-001.stdout",
+        "sha256": "6a412acd2a9c603a77a275437bf5e95e1a88ce2800a69bc7483cd762a44d11c2"
+      },
+      {
+        "path": "raw/semantic-loss-001.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "raw/semantic-loss-001.stdout",
+        "sha256": "9177a596b43615134fbcc9d1e91397e87e10375c6743dcea724641e6de7a86b8"
+      },
+      {
+        "path": "raw/semantic-loss-control-001.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "raw/semantic-loss-control-001.stdout",
+        "sha256": "0347924977b31115c8f1ae7179b7c3a527b72e63abb749d215d1e9949548ba0e"
+      },
+      {
+        "path": "raw/stale-check-001.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "raw/stale-check-001.stdout",
+        "sha256": "79d89eb3ea6ddbf028d7a49e584243a169c9c5b46824949af6badcf736128b6e"
+      },
+      {
+        "path": "raw/stale-check-control-001.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "raw/stale-check-control-001.stdout",
+        "sha256": "d9c52235ce7c174cb58865751a2aef29810ff30262f9692c677cabb653b94fa8"
+      },
+      {
+        "path": "raw/stale-review-001.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "raw/stale-review-001.stdout",
+        "sha256": "6a6d23166b21c73aa8d0603880035fd312024889dc69ea25275a2d0a3831b792"
+      },
+      {
+        "path": "raw/stale-review-control-001.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "raw/stale-review-control-001.stdout",
+        "sha256": "9e7269263d01839695f0bc06f3b1ebb3878d27a3f4ab2c1f5a416cc1f7e4e5b2"
+      }
+    ],
+    "local_only": true
+  },
+  "public_evidence": {
+    "cases": {
+      "false-completion-001": {
+        "stderr": {
+          "content": "",
+          "encoding": "utf-8",
+          "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "redaction": {
+            "algorithm": "absolute-path-v1",
+            "applied": false,
+            "encoded_originals_omitted": false,
+            "product_streams_omitted": false,
+            "replacements": 0,
+            "scans_for_arbitrary_secrets": false
+          },
+          "sanitized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source_local_raw": {
+            "path": "raw/false-completion-001.stderr",
+            "result_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "stdout": {
+          "content": "{\"adapter_version\":\"exitbind-adapter-v1\",\"coverage\":{\"status\":\"exercised\",\"support\":\"supported\"},\"product_evidence\":{\"commands\":[{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"init\",\"--mode\",\"portable\",\"--root\",\".\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"4509978d2c69dd68688378f4abe88b08b48cfd5ac588d457b64f8c26e4b439f4\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"start\",\"change\",\"--goal\",\"candidate public CLI lifecycle\",\"--check-command\",\"<redacted-absolute-path:d5aba0fe57b30c620abcee7d09a9a51d2646bd9e727e118ccbf4678dba6895ba>\",\"--ledger\",\".exitbind/runs/candidate.jsonl\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"43f07fcf574a7ec04e868fb0370eb7ee8d74cd3267f0683afe5fcbbb81fe16df\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"4f117e0dd7ee9eb358d7b6fafad27f60e153910ff3ddb0c55b793708808a22c9\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"lead\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"scoped\",\"--artifact\",\".exitbind/artifacts/lead.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"0e660a478d583a03554d0ca0454797ba95c3e674e98a5ea7daa735bd9013b196\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"worker\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"completed\",\"--artifact\",\".exitbind/artifacts/worker.md\",\"--artifact-root\",\"state\",\"--event-id\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"b5744d601755380b1f7899fc4e1b97dac746970f722fc2b37b47dd55c3b4ffd8\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"observe-check\",\".exitbind/runs/candidate.jsonl\",\"--target\",\"4bae7165b816b80cf89b66b59e26082a6d9d9d8d74e5dda054431ba084b2704c\",\"--timeout-ms\",\"1000\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"118764594d6c05b826a483b9e50fcf7b75c2ce415a2f566ab6adbb6efdcf349b\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"reviewer\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"approved\",\"--artifact\",\".exitbind/artifacts/review.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"584e6f2f06df77bc2cff548cc89c5674a8874990352dd1fc223adc176fcdb500\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"lead\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"accepted\",\"--artifact\",\".exitbind/artifacts/lead-final.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":1,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"7fa2cb8ef2702ebe9ba1ff9bf41782edb7e3c007ae3f4ec3eac2c95e65bc5591\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stdout_valid_utf8\":true}]},\"result\":{\"holytail\":\"NOT_APPLICABLE\",\"outcome\":\"REFUSED\",\"reason\":\"CHECK_FAILED\"}}",
+          "encoding": "utf-8",
+          "original_sha256": "a498f6d57c0fcf913f66e443017cb255f4582252182bd67bca84964ebf661dad",
+          "redaction": {
+            "algorithm": "absolute-path-v1",
+            "applied": true,
+            "encoded_originals_omitted": true,
+            "product_streams_omitted": true,
+            "replacements": 8,
+            "scans_for_arbitrary_secrets": false
+          },
+          "sanitized_sha256": "285107227cd3dc4f08a785301b8d1227a53d1d35673b762d7e68ae411e9f0fb9",
+          "source_local_raw": {
+            "path": "raw/false-completion-001.stdout",
+            "result_sha256": "a498f6d57c0fcf913f66e443017cb255f4582252182bd67bca84964ebf661dad",
+            "sha256": "a498f6d57c0fcf913f66e443017cb255f4582252182bd67bca84964ebf661dad"
+          }
+        }
+      },
+      "false-completion-control-001": {
+        "stderr": {
+          "content": "",
+          "encoding": "utf-8",
+          "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "redaction": {
+            "algorithm": "absolute-path-v1",
+            "applied": false,
+            "encoded_originals_omitted": false,
+            "product_streams_omitted": false,
+            "replacements": 0,
+            "scans_for_arbitrary_secrets": false
+          },
+          "sanitized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source_local_raw": {
+            "path": "raw/false-completion-control-001.stderr",
+            "result_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "stdout": {
+          "content": "{\"adapter_version\":\"exitbind-adapter-v1\",\"coverage\":{\"status\":\"exercised\",\"support\":\"supported\"},\"product_evidence\":{\"commands\":[{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"init\",\"--mode\",\"portable\",\"--root\",\".\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"c79f4d055d31de1b7c477501e0747f8fe7ce95ab336a7c12a628da9e0e0aca4c\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"start\",\"change\",\"--goal\",\"candidate public CLI lifecycle\",\"--check-command\",\"<redacted-absolute-path:b5e6f77be438be2102aff91bb048414f26e4ed0c05b6986e84f0c35806afc018>\",\"--ledger\",\".exitbind/runs/candidate.jsonl\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"43f07fcf574a7ec04e868fb0370eb7ee8d74cd3267f0683afe5fcbbb81fe16df\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"79b5504d6effdb52025fb3472faab9b07e2b2fff9cf3f6d0b202f65b93c0e7dc\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"lead\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"scoped\",\"--artifact\",\".exitbind/artifacts/lead.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"9a09514e712e677071c7f1f94fdfa241bd5c5f1dd30304bae81868bded7d31d0\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"worker\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"completed\",\"--artifact\",\".exitbind/artifacts/worker.md\",\"--artifact-root\",\"state\",\"--event-id\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"2ac53378a05ce59fe444ef598d53890f4baaa7940eb02b630cf107b220329389\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"observe-check\",\".exitbind/runs/candidate.jsonl\",\"--target\",\"a8d3ffdcb082624c4708409d6bd4068eda13a4b16ebfb22c90ee521073fba035\",\"--timeout-ms\",\"1000\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"5ea9ca3e013757b6740f4a46ec024d31900d526eb78297149248c35988348174\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"reviewer\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"approved\",\"--artifact\",\".exitbind/artifacts/review.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"c6aa538f7515db4c24606fb73c5cea5c2f58c0ff0ef47dc1ddf04b5a92822445\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"lead\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"accepted\",\"--artifact\",\".exitbind/artifacts/lead-final.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"44fd878c02c1d8fafe559218c1a8d46c686b09e745253bf1eb8b26e00e3349d8\",\"stdout_valid_utf8\":true}]},\"result\":{\"holytail\":\"NOT_APPLICABLE\",\"outcome\":\"READY\",\"reason\":\"ACCEPTED\"}}",
+          "encoding": "utf-8",
+          "original_sha256": "e7de722dcdb50af33f993ca3408eea6fca1d45d7d2a5f58fc3dcbc158aa77c3a",
+          "redaction": {
+            "algorithm": "absolute-path-v1",
+            "applied": true,
+            "encoded_originals_omitted": true,
+            "product_streams_omitted": true,
+            "replacements": 8,
+            "scans_for_arbitrary_secrets": false
+          },
+          "sanitized_sha256": "71eadcaed99ed3f6bfd075ddf7afdf45905945292e916f700c1ffc074e5f0455",
+          "source_local_raw": {
+            "path": "raw/false-completion-control-001.stdout",
+            "result_sha256": "e7de722dcdb50af33f993ca3408eea6fca1d45d7d2a5f58fc3dcbc158aa77c3a",
+            "sha256": "e7de722dcdb50af33f993ca3408eea6fca1d45d7d2a5f58fc3dcbc158aa77c3a"
+          }
+        }
+      },
+      "partial-completion-001": {
+        "stderr": {
+          "content": "",
+          "encoding": "utf-8",
+          "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "redaction": {
+            "algorithm": "absolute-path-v1",
+            "applied": false,
+            "encoded_originals_omitted": false,
+            "product_streams_omitted": false,
+            "replacements": 0,
+            "scans_for_arbitrary_secrets": false
+          },
+          "sanitized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source_local_raw": {
+            "path": "raw/partial-completion-001.stderr",
+            "result_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "stdout": {
+          "content": "{\"adapter_version\":\"exitbind-adapter-v1\",\"coverage\":{\"status\":\"unexercised\",\"support\":\"unsupported\"},\"limitation\":\"v0.17.0 public CLI cannot generate partial-completion evidence; reported result is the observed generic lifecycle, not fabricated semantic detection\",\"product_evidence\":{\"commands\":[{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"init\",\"--mode\",\"portable\",\"--root\",\".\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"5d1a83072d33287a36dfb01ee7a2b5b16b41fa995c5df8c7e42fd45b7c029a7a\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"start\",\"change\",\"--goal\",\"candidate public CLI lifecycle\",\"--check-command\",\"<redacted-absolute-path:b5e6f77be438be2102aff91bb048414f26e4ed0c05b6986e84f0c35806afc018>\",\"--ledger\",\".exitbind/runs/candidate.jsonl\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"43f07fcf574a7ec04e868fb0370eb7ee8d74cd3267f0683afe5fcbbb81fe16df\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"4c8d012dfa52365d629b04337b3312bc946fecb2c2b993dca7612ba91326c799\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"lead\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"scoped\",\"--artifact\",\".exitbind/artifacts/lead.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"84385359030dbd9daa975a80b779825921af00555db53fa2f867a3b61707cbf0\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"worker\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"completed\",\"--artifact\",\".exitbind/artifacts/worker.md\",\"--artifact-root\",\"state\",\"--event-id\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"a5993e96cf0855e1f3425386042523032492c548e547283e17b0d9cb3a767fb2\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"observe-check\",\".exitbind/runs/candidate.jsonl\",\"--target\",\"052d7386ced591b1a85fd6ac2069f312ff578a60e2a58693620f042d70386ad3\",\"--timeout-ms\",\"1000\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"d0b0761d14fac1bc4308f893e0597613bef440ecdfbddd45365c41dd775074b9\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"reviewer\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"approved\",\"--artifact\",\".exitbind/artifacts/review.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"37c8a3c52df585f656b537c9db300b47df42d157944e5de4fa76bec1f5f9efd4\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"lead\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"accepted\",\"--artifact\",\".exitbind/artifacts/lead-final.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"f4ffeec49870098d819c66e26fdaf36057c3d412e420dff3cfd62d7819b5ed57\",\"stdout_valid_utf8\":true}]},\"result\":{\"holytail\":\"NOT_APPLICABLE\",\"outcome\":\"READY\",\"reason\":\"ACCEPTED\"}}",
+          "encoding": "utf-8",
+          "original_sha256": "20749323b9d2349d7d35099e0bfa19249ef862f18ef47744bd150f4d001d6542",
+          "redaction": {
+            "algorithm": "absolute-path-v1",
+            "applied": true,
+            "encoded_originals_omitted": true,
+            "product_streams_omitted": true,
+            "replacements": 8,
+            "scans_for_arbitrary_secrets": false
+          },
+          "sanitized_sha256": "7481762259a517dcff4264b7a8ebcb6cef54eda59a962e908fb672572ae2f6c8",
+          "source_local_raw": {
+            "path": "raw/partial-completion-001.stdout",
+            "result_sha256": "20749323b9d2349d7d35099e0bfa19249ef862f18ef47744bd150f4d001d6542",
+            "sha256": "20749323b9d2349d7d35099e0bfa19249ef862f18ef47744bd150f4d001d6542"
+          }
+        }
+      },
+      "partial-completion-control-001": {
+        "stderr": {
+          "content": "",
+          "encoding": "utf-8",
+          "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "redaction": {
+            "algorithm": "absolute-path-v1",
+            "applied": false,
+            "encoded_originals_omitted": false,
+            "product_streams_omitted": false,
+            "replacements": 0,
+            "scans_for_arbitrary_secrets": false
+          },
+          "sanitized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source_local_raw": {
+            "path": "raw/partial-completion-control-001.stderr",
+            "result_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "stdout": {
+          "content": "{\"adapter_version\":\"exitbind-adapter-v1\",\"coverage\":{\"status\":\"exercised\",\"support\":\"supported\"},\"product_evidence\":{\"commands\":[{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"init\",\"--mode\",\"portable\",\"--root\",\".\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"3db79364f2c90f4f57069698df727586637efcc11a18ba5775d547ccc6f71b13\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"start\",\"change\",\"--goal\",\"candidate public CLI lifecycle\",\"--check-command\",\"<redacted-absolute-path:b5e6f77be438be2102aff91bb048414f26e4ed0c05b6986e84f0c35806afc018>\",\"--ledger\",\".exitbind/runs/candidate.jsonl\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"43f07fcf574a7ec04e868fb0370eb7ee8d74cd3267f0683afe5fcbbb81fe16df\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"638debab3264cb5ce30daffc6480041d8465c21a3d6cb57c490969a4780ab68d\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"lead\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"scoped\",\"--artifact\",\".exitbind/artifacts/lead.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"9e147b3bdfe472889054153768f5b4bc59aebb952c4d3b2efbf99b26f1f89f9f\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"worker\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"completed\",\"--artifact\",\".exitbind/artifacts/worker.md\",\"--artifact-root\",\"state\",\"--event-id\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"5350aa594842b386f1544cc9e3f7b06022afc2d6649f0fae8f10af7f612afde2\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"observe-check\",\".exitbind/runs/candidate.jsonl\",\"--target\",\"adaefd19cb6b45742e245f45aa26004c9474f496b8b98552a25639d8bc756987\",\"--timeout-ms\",\"1000\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"b352c8ddb63ad0488b535d926d3c9502ad1813767f6a3e2d781edcff9ebc9bf8\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"reviewer\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"approved\",\"--artifact\",\".exitbind/artifacts/review.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"bbd9370b47f09137e4c99fe7db17e070373bacb9a45d65db4658cb068dc03c44\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"lead\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"accepted\",\"--artifact\",\".exitbind/artifacts/lead-final.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"d4972f187435df0aff54415eab326aac42b748e2634211327c6a61f7ef5fb949\",\"stdout_valid_utf8\":true}]},\"result\":{\"holytail\":\"PRESERVED\",\"outcome\":\"READY\",\"reason\":\"ACCEPTED\"}}",
+          "encoding": "utf-8",
+          "original_sha256": "74640fc7ec1296adc8c4be3ba7ead809151b1b38b384606e69e133deb5dd6390",
+          "redaction": {
+            "algorithm": "absolute-path-v1",
+            "applied": true,
+            "encoded_originals_omitted": true,
+            "product_streams_omitted": true,
+            "replacements": 8,
+            "scans_for_arbitrary_secrets": false
+          },
+          "sanitized_sha256": "19d176125496d40d81067d0a21f8edd5d0f6b808604d935cda15f3f5b3049570",
+          "source_local_raw": {
+            "path": "raw/partial-completion-control-001.stdout",
+            "result_sha256": "74640fc7ec1296adc8c4be3ba7ead809151b1b38b384606e69e133deb5dd6390",
+            "sha256": "74640fc7ec1296adc8c4be3ba7ead809151b1b38b384606e69e133deb5dd6390"
+          }
+        }
+      },
+      "reported-observed-001": {
+        "stderr": {
+          "content": "",
+          "encoding": "utf-8",
+          "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "redaction": {
+            "algorithm": "absolute-path-v1",
+            "applied": false,
+            "encoded_originals_omitted": false,
+            "product_streams_omitted": false,
+            "replacements": 0,
+            "scans_for_arbitrary_secrets": false
+          },
+          "sanitized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source_local_raw": {
+            "path": "raw/reported-observed-001.stderr",
+            "result_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "stdout": {
+          "content": "{\"adapter_version\":\"exitbind-adapter-v1\",\"coverage\":{\"status\":\"exercised\",\"support\":\"supported\"},\"product_evidence\":{\"commands\":[{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"init\",\"--mode\",\"portable\",\"--root\",\".\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"b51f0d94e3acbc6060a4e8fd8a119013c5ec176888a0cc457bc60b4693cb3231\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"start\",\"change\",\"--goal\",\"candidate public CLI lifecycle\",\"--check-command\",\"<redacted-absolute-path:b5e6f77be438be2102aff91bb048414f26e4ed0c05b6986e84f0c35806afc018>\",\"--ledger\",\".exitbind/runs/candidate.jsonl\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"43f07fcf574a7ec04e868fb0370eb7ee8d74cd3267f0683afe5fcbbb81fe16df\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"9c9736da8926c236f00df39ea54760e59fd7ae8fc4adcf0e80073478ed6cfca1\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"lead\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"scoped\",\"--artifact\",\".exitbind/artifacts/lead.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"754c8a975d9ccba5095917a58275e253ebfbbb5e7bc1a188bffa50cddd5207c0\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"worker\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"completed\",\"--artifact\",\".exitbind/artifacts/worker.md\",\"--artifact-root\",\"state\",\"--event-id\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"f053b280680a0e424e5852d442c1623ef475aea2e2e000ccd293885409b8f965\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"record-check\",\".exitbind/runs/candidate.jsonl\",\"--target\",\"e92ea6b48154f39a9319c402300b846eee25c09b0d6629c41acc390512331029\",\"--check-command\",\"<redacted-absolute-path:b5e6f77be438be2102aff91bb048414f26e4ed0c05b6986e84f0c35806afc018>\",\"--exit-code\",\"0\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"d402ab0b63a138bccaf2efb4f04710a24c28589995c0b762e3e407cdbf5296ea\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"reviewer\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"approved\",\"--artifact\",\".exitbind/artifacts/review.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"7b729e9be6ee72c4f3b65d299ed30aebb16ec1b2b2a25956e3634ff3d948ae8b\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"lead\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"accepted\",\"--artifact\",\".exitbind/artifacts/lead-final.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"86d22e3f830edaab97a60556e8b479d66816d2cfba5fc27981325204aeab0e95\",\"stdout_valid_utf8\":true}]},\"result\":{\"holytail\":\"NOT_APPLICABLE\",\"outcome\":\"READY\",\"reason\":\"ACCEPTED\"}}",
+          "encoding": "utf-8",
+          "original_sha256": "22eb5325180faeef578facf563b762c116b62b7cea5b317f67a732c917f76a0d",
+          "redaction": {
+            "algorithm": "absolute-path-v1",
+            "applied": true,
+            "encoded_originals_omitted": true,
+            "product_streams_omitted": true,
+            "replacements": 9,
+            "scans_for_arbitrary_secrets": false
+          },
+          "sanitized_sha256": "614f3c1d527dab0ef7d74c56a584a6603c99ff6339f4d8ccd057e29a2d06699f",
+          "source_local_raw": {
+            "path": "raw/reported-observed-001.stdout",
+            "result_sha256": "22eb5325180faeef578facf563b762c116b62b7cea5b317f67a732c917f76a0d",
+            "sha256": "22eb5325180faeef578facf563b762c116b62b7cea5b317f67a732c917f76a0d"
+          }
+        }
+      },
+      "reported-observed-control-001": {
+        "stderr": {
+          "content": "",
+          "encoding": "utf-8",
+          "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "redaction": {
+            "algorithm": "absolute-path-v1",
+            "applied": false,
+            "encoded_originals_omitted": false,
+            "product_streams_omitted": false,
+            "replacements": 0,
+            "scans_for_arbitrary_secrets": false
+          },
+          "sanitized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source_local_raw": {
+            "path": "raw/reported-observed-control-001.stderr",
+            "result_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "stdout": {
+          "content": "{\"adapter_version\":\"exitbind-adapter-v1\",\"coverage\":{\"status\":\"exercised\",\"support\":\"supported\"},\"product_evidence\":{\"commands\":[{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"init\",\"--mode\",\"portable\",\"--root\",\".\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"d830a8e72d4b0d6035eea146a2f785247647fa9c1cb162539d43886c6bf5ff03\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"start\",\"change\",\"--goal\",\"candidate public CLI lifecycle\",\"--check-command\",\"<redacted-absolute-path:b5e6f77be438be2102aff91bb048414f26e4ed0c05b6986e84f0c35806afc018>\",\"--ledger\",\".exitbind/runs/candidate.jsonl\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"43f07fcf574a7ec04e868fb0370eb7ee8d74cd3267f0683afe5fcbbb81fe16df\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"2152b72f287b12de6dedf01fbde95d6220f652bf4f67833080968d884f7ae8d7\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"lead\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"scoped\",\"--artifact\",\".exitbind/artifacts/lead.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"5f37b98381be1294fc21c897eff71c64a52aef32e7c91c68f68976970ce2c831\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"worker\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"completed\",\"--artifact\",\".exitbind/artifacts/worker.md\",\"--artifact-root\",\"state\",\"--event-id\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"c1a27e4fe47ffec2a8e9dc6dd67670f9d271c0105bc84e0f32e2936d849cea50\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"observe-check\",\".exitbind/runs/candidate.jsonl\",\"--target\",\"eb50b6bcb2a266c8ea1dade1d773e284b77d88a927c09f313ff0ce9d00488a39\",\"--timeout-ms\",\"1000\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"2c87d6da9ea73fd882b238de35a050ee1604e9dfa9faad77dcf8866068e26da4\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"reviewer\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"approved\",\"--artifact\",\".exitbind/artifacts/review.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"c094b603ba320d3deda482f3fd793ab2303b5e38d43b39be681b0812714ad39d\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"lead\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"accepted\",\"--artifact\",\".exitbind/artifacts/lead-final.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"08a98982dedbe180de63ff968159c6fced508af9bfa13ea15cc3d75a688100b7\",\"stdout_valid_utf8\":true}]},\"result\":{\"holytail\":\"NOT_APPLICABLE\",\"outcome\":\"READY\",\"reason\":\"ACCEPTED\"}}",
+          "encoding": "utf-8",
+          "original_sha256": "6a412acd2a9c603a77a275437bf5e95e1a88ce2800a69bc7483cd762a44d11c2",
+          "redaction": {
+            "algorithm": "absolute-path-v1",
+            "applied": true,
+            "encoded_originals_omitted": true,
+            "product_streams_omitted": true,
+            "replacements": 8,
+            "scans_for_arbitrary_secrets": false
+          },
+          "sanitized_sha256": "9e2f124feec6245fbed3d9e646ef95e9f94f934ccca8ad2c1673673ba6773ddf",
+          "source_local_raw": {
+            "path": "raw/reported-observed-control-001.stdout",
+            "result_sha256": "6a412acd2a9c603a77a275437bf5e95e1a88ce2800a69bc7483cd762a44d11c2",
+            "sha256": "6a412acd2a9c603a77a275437bf5e95e1a88ce2800a69bc7483cd762a44d11c2"
+          }
+        }
+      },
+      "semantic-loss-001": {
+        "stderr": {
+          "content": "",
+          "encoding": "utf-8",
+          "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "redaction": {
+            "algorithm": "absolute-path-v1",
+            "applied": false,
+            "encoded_originals_omitted": false,
+            "product_streams_omitted": false,
+            "replacements": 0,
+            "scans_for_arbitrary_secrets": false
+          },
+          "sanitized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source_local_raw": {
+            "path": "raw/semantic-loss-001.stderr",
+            "result_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "stdout": {
+          "content": "{\"adapter_version\":\"exitbind-adapter-v1\",\"coverage\":{\"status\":\"unexercised\",\"support\":\"unsupported\"},\"limitation\":\"v0.17.0 public CLI cannot generate semantic-loss evidence; reported result is the observed generic lifecycle, not fabricated semantic detection\",\"product_evidence\":{\"commands\":[{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"init\",\"--mode\",\"portable\",\"--root\",\".\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"ea006eab6e09cb7087a0709941755f13372f00ad14520bdb25ece2126d3a62c0\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"start\",\"change\",\"--goal\",\"candidate public CLI lifecycle\",\"--check-command\",\"<redacted-absolute-path:b5e6f77be438be2102aff91bb048414f26e4ed0c05b6986e84f0c35806afc018>\",\"--ledger\",\".exitbind/runs/candidate.jsonl\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"43f07fcf574a7ec04e868fb0370eb7ee8d74cd3267f0683afe5fcbbb81fe16df\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"d4fd679312c926ae41528a90901832643c1a7560732fc4daf48bee47be324968\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"lead\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"scoped\",\"--artifact\",\".exitbind/artifacts/lead.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"72ab090a7cd8fc1311f3ae99f76a5ea5eefff19d5cdf4e9c466f70182d7903e6\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"worker\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"completed\",\"--artifact\",\".exitbind/artifacts/worker.md\",\"--artifact-root\",\"state\",\"--event-id\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"6c7b1258de4e80a537e315a89d85f256a7fac0c5360d0d4e29e95f9b567ab84f\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"observe-check\",\".exitbind/runs/candidate.jsonl\",\"--target\",\"87ff1c55d0cb2f3b7dfe31bb7b8fbcb643025befcd75fd8158afe8bd689630a0\",\"--timeout-ms\",\"1000\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"95e19fe7306b63f123f37040d51245cd82c25a999aabff2f5cd87732aef79369\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"reviewer\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"approved\",\"--artifact\",\".exitbind/artifacts/review.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"5c1fecacdeb9c564ba21c24709448f09be584ce0086475c5a04e4d2f4fdffc26\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"lead\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"accepted\",\"--artifact\",\".exitbind/artifacts/lead-final.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"a43e56051693704f51704c24012cf9af1ef731ac5e44e7b4bffa71af5d023f96\",\"stdout_valid_utf8\":true}]},\"result\":{\"holytail\":\"NOT_APPLICABLE\",\"outcome\":\"READY\",\"reason\":\"ACCEPTED\"}}",
+          "encoding": "utf-8",
+          "original_sha256": "9177a596b43615134fbcc9d1e91397e87e10375c6743dcea724641e6de7a86b8",
+          "redaction": {
+            "algorithm": "absolute-path-v1",
+            "applied": true,
+            "encoded_originals_omitted": true,
+            "product_streams_omitted": true,
+            "replacements": 8,
+            "scans_for_arbitrary_secrets": false
+          },
+          "sanitized_sha256": "0d615f071f3998af17a41e9ae9451e6e1fcf51c7fce5f3ae5c76623ec710d3ce",
+          "source_local_raw": {
+            "path": "raw/semantic-loss-001.stdout",
+            "result_sha256": "9177a596b43615134fbcc9d1e91397e87e10375c6743dcea724641e6de7a86b8",
+            "sha256": "9177a596b43615134fbcc9d1e91397e87e10375c6743dcea724641e6de7a86b8"
+          }
+        }
+      },
+      "semantic-loss-control-001": {
+        "stderr": {
+          "content": "",
+          "encoding": "utf-8",
+          "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "redaction": {
+            "algorithm": "absolute-path-v1",
+            "applied": false,
+            "encoded_originals_omitted": false,
+            "product_streams_omitted": false,
+            "replacements": 0,
+            "scans_for_arbitrary_secrets": false
+          },
+          "sanitized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source_local_raw": {
+            "path": "raw/semantic-loss-control-001.stderr",
+            "result_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "stdout": {
+          "content": "{\"adapter_version\":\"exitbind-adapter-v1\",\"coverage\":{\"status\":\"exercised\",\"support\":\"supported\"},\"product_evidence\":{\"commands\":[{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"init\",\"--mode\",\"portable\",\"--root\",\".\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"d681fdf77ae9ffa0840cc0ddac3078f1bbc631b614e8c3362756551ae8117833\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"start\",\"change\",\"--goal\",\"candidate public CLI lifecycle\",\"--check-command\",\"<redacted-absolute-path:b5e6f77be438be2102aff91bb048414f26e4ed0c05b6986e84f0c35806afc018>\",\"--ledger\",\".exitbind/runs/candidate.jsonl\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"43f07fcf574a7ec04e868fb0370eb7ee8d74cd3267f0683afe5fcbbb81fe16df\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"615906132ca3676d6dc97a05a81c29bb7b3a44006893be5a75bdb529d2851839\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"lead\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"scoped\",\"--artifact\",\".exitbind/artifacts/lead.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"09d4f32b084987676ec610923451e5524ca97da78f9fb290a1064784adaefd8a\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"worker\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"completed\",\"--artifact\",\".exitbind/artifacts/worker.md\",\"--artifact-root\",\"state\",\"--event-id\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"06da959578b0acb9b0d8984e2077a9ba79257c52ce3346c212e082ac9c875b77\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"observe-check\",\".exitbind/runs/candidate.jsonl\",\"--target\",\"002cd5f2b89233f1906d90c62a32b27baa254bda98a5279f4683ac3be42bc066\",\"--timeout-ms\",\"1000\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"9278f1740da304495344b8fe61a9212cfbbcd200cfece0966176ab175388c335\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"reviewer\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"approved\",\"--artifact\",\".exitbind/artifacts/review.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"cf1baf0beacbc8c39991d934bff5e977b1cdb5dd701ce639c9ba173941befffe\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"lead\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"accepted\",\"--artifact\",\".exitbind/artifacts/lead-final.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"2d374d46014a87e9662218b8acc855d5a25ecfdb4042ebe945e794302c82ae28\",\"stdout_valid_utf8\":true}]},\"result\":{\"holytail\":\"PRESERVED\",\"outcome\":\"READY\",\"reason\":\"ACCEPTED\"}}",
+          "encoding": "utf-8",
+          "original_sha256": "0347924977b31115c8f1ae7179b7c3a527b72e63abb749d215d1e9949548ba0e",
+          "redaction": {
+            "algorithm": "absolute-path-v1",
+            "applied": true,
+            "encoded_originals_omitted": true,
+            "product_streams_omitted": true,
+            "replacements": 8,
+            "scans_for_arbitrary_secrets": false
+          },
+          "sanitized_sha256": "088fa76617db7ce9fdb49bf8d47fa0da079a9ff3622c55e813e33e9346de8fcf",
+          "source_local_raw": {
+            "path": "raw/semantic-loss-control-001.stdout",
+            "result_sha256": "0347924977b31115c8f1ae7179b7c3a527b72e63abb749d215d1e9949548ba0e",
+            "sha256": "0347924977b31115c8f1ae7179b7c3a527b72e63abb749d215d1e9949548ba0e"
+          }
+        }
+      },
+      "stale-check-001": {
+        "stderr": {
+          "content": "",
+          "encoding": "utf-8",
+          "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "redaction": {
+            "algorithm": "absolute-path-v1",
+            "applied": false,
+            "encoded_originals_omitted": false,
+            "product_streams_omitted": false,
+            "replacements": 0,
+            "scans_for_arbitrary_secrets": false
+          },
+          "sanitized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source_local_raw": {
+            "path": "raw/stale-check-001.stderr",
+            "result_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "stdout": {
+          "content": "{\"adapter_version\":\"exitbind-adapter-v1\",\"coverage\":{\"status\":\"unexercised\",\"support\":\"unsupported\"},\"limitation\":\"stale-check observation retained in local raw product evidence; diagnostic category: known-guard\",\"product_evidence\":{\"commands\":[{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"init\",\"--mode\",\"portable\",\"--root\",\".\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"c6a4c12359ee7b7a275a634d9b5a7ff946a75bbb72845c2c4afff3e7bf24aada\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"start\",\"change\",\"--goal\",\"candidate public CLI lifecycle\",\"--check-command\",\"<redacted-absolute-path:b5e6f77be438be2102aff91bb048414f26e4ed0c05b6986e84f0c35806afc018>\",\"--ledger\",\".exitbind/runs/candidate.jsonl\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"43f07fcf574a7ec04e868fb0370eb7ee8d74cd3267f0683afe5fcbbb81fe16df\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"00ba4785ecb13a21b90c424a7be238436262dd9a79196d854d610daded4c8256\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"lead\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"scoped\",\"--artifact\",\".exitbind/artifacts/lead.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"cd9d1bf9927b934efb23a9a84a596d5b1cd4c0f528ccdb502761c26e005c22a6\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"worker\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"completed\",\"--artifact\",\".exitbind/artifacts/worker-first.md\",\"--artifact-root\",\"state\",\"--event-id\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"78939ed8803a6b6187c0f55ecc393afc7a9217bed04467f31b7c1cd53515153a\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"observe-check\",\".exitbind/runs/candidate.jsonl\",\"--target\",\"6f6ddee1292d089881ad1757a15fbcb903fe790830dd59a10c457735d223aedf\",\"--timeout-ms\",\"1000\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"fa732ac0fb37aa30ecf826145d43da4a1bd98539e849d24760c2523d1206a6aa\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"reviewer\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"rework\",\"--artifact\",\".exitbind/artifacts/review-rework.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"6702d898852d20bc08cfb0a36063b6b9c81ee29e9a411c532e437c9060278719\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"worker\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"completed\",\"--artifact\",\".exitbind/artifacts/worker-second.md\",\"--artifact-root\",\"state\",\"--event-id\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"4fff72384e1845ae3d0f3ad0a95e36024c393e06b2b2b606e64cb8c72ac4cb88\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"observe-check\",\".exitbind/runs/candidate.jsonl\",\"--target\",\"6f6ddee1292d089881ad1757a15fbcb903fe790830dd59a10c457735d223aedf\",\"--timeout-ms\",\"1000\",\"--config\",\"exitbind.json\"],\"returncode\":1,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"36281fea59da959704f7699b5f42d8963ebc4ac2a6b2e78b81f055f23715d2f5\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stdout_valid_utf8\":true}]},\"result\":{\"holytail\":\"NOT_APPLICABLE\",\"outcome\":\"BLOCKED\",\"reason\":\"ADAPTER_UNSUPPORTED\"}}",
+          "encoding": "utf-8",
+          "original_sha256": "79d89eb3ea6ddbf028d7a49e584243a169c9c5b46824949af6badcf736128b6e",
+          "redaction": {
+            "algorithm": "absolute-path-v1",
+            "applied": true,
+            "encoded_originals_omitted": true,
+            "product_streams_omitted": true,
+            "replacements": 9,
+            "scans_for_arbitrary_secrets": false
+          },
+          "sanitized_sha256": "61d6fb5fd0d7b62e8ba94cb24b2d6a6883eee7ed7bf77f2a184a8320eb4acee6",
+          "source_local_raw": {
+            "path": "raw/stale-check-001.stdout",
+            "result_sha256": "79d89eb3ea6ddbf028d7a49e584243a169c9c5b46824949af6badcf736128b6e",
+            "sha256": "79d89eb3ea6ddbf028d7a49e584243a169c9c5b46824949af6badcf736128b6e"
+          }
+        }
+      },
+      "stale-check-control-001": {
+        "stderr": {
+          "content": "",
+          "encoding": "utf-8",
+          "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "redaction": {
+            "algorithm": "absolute-path-v1",
+            "applied": false,
+            "encoded_originals_omitted": false,
+            "product_streams_omitted": false,
+            "replacements": 0,
+            "scans_for_arbitrary_secrets": false
+          },
+          "sanitized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source_local_raw": {
+            "path": "raw/stale-check-control-001.stderr",
+            "result_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "stdout": {
+          "content": "{\"adapter_version\":\"exitbind-adapter-v1\",\"coverage\":{\"status\":\"exercised\",\"support\":\"supported\"},\"product_evidence\":{\"commands\":[{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"init\",\"--mode\",\"portable\",\"--root\",\".\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"ba4c69f83590478c4c4409e98ec7ee04327aee173de5c1c6041036cbadc8ffcc\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"start\",\"change\",\"--goal\",\"candidate public CLI lifecycle\",\"--check-command\",\"<redacted-absolute-path:b5e6f77be438be2102aff91bb048414f26e4ed0c05b6986e84f0c35806afc018>\",\"--ledger\",\".exitbind/runs/candidate.jsonl\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"43f07fcf574a7ec04e868fb0370eb7ee8d74cd3267f0683afe5fcbbb81fe16df\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"f8cb15fdc7944063565974a020e635506c2613b4911446fcc6f0040c6aa3b179\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"lead\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"scoped\",\"--artifact\",\".exitbind/artifacts/lead.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"3f5166c047ce37a5f2cb8143c918a643b3877d4a96cd95cb537c68a85ab91825\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"worker\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"completed\",\"--artifact\",\".exitbind/artifacts/worker.md\",\"--artifact-root\",\"state\",\"--event-id\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"43e2d740baa6d3690f0230781447c3c8b82e300e32d3c51e94f4bc6dc986ca91\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"observe-check\",\".exitbind/runs/candidate.jsonl\",\"--target\",\"5e3bab1238f534170de81384c5048005e5160819baf40bb0379357b91d088d64\",\"--timeout-ms\",\"1000\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"3ad6b1a1d6a1f051bf540d8e867dbb33108baf46d41dffaf2c77c7da6b407f9f\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"reviewer\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"approved\",\"--artifact\",\".exitbind/artifacts/review.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"ec53c5dc89e7253b5c6f3a8d36bd54cab715608f243ddac5c1b3f836165575c8\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"lead\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"accepted\",\"--artifact\",\".exitbind/artifacts/lead-final.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"70a12433d69c135bc03d01277f33b5d8b0dca09fdb1d3140a5b24d547666c16e\",\"stdout_valid_utf8\":true}]},\"result\":{\"holytail\":\"NOT_APPLICABLE\",\"outcome\":\"READY\",\"reason\":\"ACCEPTED\"}}",
+          "encoding": "utf-8",
+          "original_sha256": "d9c52235ce7c174cb58865751a2aef29810ff30262f9692c677cabb653b94fa8",
+          "redaction": {
+            "algorithm": "absolute-path-v1",
+            "applied": true,
+            "encoded_originals_omitted": true,
+            "product_streams_omitted": true,
+            "replacements": 8,
+            "scans_for_arbitrary_secrets": false
+          },
+          "sanitized_sha256": "5d4742a4846d04fa5fccfaeea6e97003cf98812920a1b16d7fb9f2c8e3d14242",
+          "source_local_raw": {
+            "path": "raw/stale-check-control-001.stdout",
+            "result_sha256": "d9c52235ce7c174cb58865751a2aef29810ff30262f9692c677cabb653b94fa8",
+            "sha256": "d9c52235ce7c174cb58865751a2aef29810ff30262f9692c677cabb653b94fa8"
+          }
+        }
+      },
+      "stale-review-001": {
+        "stderr": {
+          "content": "",
+          "encoding": "utf-8",
+          "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "redaction": {
+            "algorithm": "absolute-path-v1",
+            "applied": false,
+            "encoded_originals_omitted": false,
+            "product_streams_omitted": false,
+            "replacements": 0,
+            "scans_for_arbitrary_secrets": false
+          },
+          "sanitized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source_local_raw": {
+            "path": "raw/stale-review-001.stderr",
+            "result_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "stdout": {
+          "content": "{\"adapter_version\":\"exitbind-adapter-v1\",\"coverage\":{\"status\":\"unexercised\",\"support\":\"unsupported\"},\"limitation\":\"stale-review guard observed; v0.17.0 requires a current reviewer submission after rework; local raw product evidence is retained\",\"product_evidence\":{\"commands\":[{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"init\",\"--mode\",\"portable\",\"--root\",\".\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"d7518266ea67d1250ffb3fe63a5a42333aeae2d37bc01e95590e837f46a6f945\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"start\",\"change\",\"--goal\",\"candidate public CLI lifecycle\",\"--check-command\",\"<redacted-absolute-path:b5e6f77be438be2102aff91bb048414f26e4ed0c05b6986e84f0c35806afc018>\",\"--ledger\",\".exitbind/runs/candidate.jsonl\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"43f07fcf574a7ec04e868fb0370eb7ee8d74cd3267f0683afe5fcbbb81fe16df\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"c547f740e16f23e5baa8abdb523c597a4c6600814e0129794f123875d7a33c01\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"lead\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"scoped\",\"--artifact\",\".exitbind/artifacts/lead.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"2895d5b20b765c2e363c7033015492031f028e0a9fca4c1ff5f857596591f581\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"worker\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"completed\",\"--artifact\",\".exitbind/artifacts/worker-first.md\",\"--artifact-root\",\"state\",\"--event-id\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"c88f60794f6e0705377ee3dbacb21658d32f807d5534c189375a5749a0eb2618\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"observe-check\",\".exitbind/runs/candidate.jsonl\",\"--target\",\"7aa7b00ad56b14f48ad13fe950ca96238bb49acfc43f93590b0800ec98d5fd53\",\"--timeout-ms\",\"1000\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"24c8c340492c17b263e2e9d42cf247345725be80924974c3386eaef8100b0f22\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"reviewer\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"approved\",\"--artifact\",\".exitbind/artifacts/review-first.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"3b645e8c3ae45b5e17bacf063da2f1ccdc787757ee018e2a1916fcb0788a25e7\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"lead\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"rework\",\"--artifact\",\".exitbind/artifacts/lead-rework.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"3e904c9c2e571f956d907d5f9122b18c6d1e8b96af7e4376a8789a87a9165820\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"worker\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"completed\",\"--artifact\",\".exitbind/artifacts/worker-second.md\",\"--artifact-root\",\"state\",\"--event-id\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"2dcaeec073230fcc60c55f39ab93c2ad96a80a767283ffd84f1dc2c06f8b9c8a\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"observe-check\",\".exitbind/runs/candidate.jsonl\",\"--target\",\"0ca318f519a336a1a43ef9ce40a4fa2626c1a3e093fcd734170e84b859c1f465\",\"--timeout-ms\",\"1000\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"a44d8dafe94930b44b9dcb6e3398c2086a50bcecf9156cd0e0427d4dc57f3aa1\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"lead\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"accepted\",\"--artifact\",\".exitbind/artifacts/lead-without-fresh-review.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":1,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"0cd502a40c334ffc590929beec48201dcafe0d957e85d168239aa4ccf02387a9\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stdout_valid_utf8\":true}]},\"result\":{\"holytail\":\"NOT_APPLICABLE\",\"outcome\":\"BLOCKED\",\"reason\":\"ADAPTER_UNSUPPORTED\"}}",
+          "encoding": "utf-8",
+          "original_sha256": "6a6d23166b21c73aa8d0603880035fd312024889dc69ea25275a2d0a3831b792",
+          "redaction": {
+            "algorithm": "absolute-path-v1",
+            "applied": true,
+            "encoded_originals_omitted": true,
+            "product_streams_omitted": true,
+            "replacements": 11,
+            "scans_for_arbitrary_secrets": false
+          },
+          "sanitized_sha256": "bcbbf8445234816b691fd11d7123b6e04307451912ea76ea2f7154a5fc7c8b39",
+          "source_local_raw": {
+            "path": "raw/stale-review-001.stdout",
+            "result_sha256": "6a6d23166b21c73aa8d0603880035fd312024889dc69ea25275a2d0a3831b792",
+            "sha256": "6a6d23166b21c73aa8d0603880035fd312024889dc69ea25275a2d0a3831b792"
+          }
+        }
+      },
+      "stale-review-control-001": {
+        "stderr": {
+          "content": "",
+          "encoding": "utf-8",
+          "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "redaction": {
+            "algorithm": "absolute-path-v1",
+            "applied": false,
+            "encoded_originals_omitted": false,
+            "product_streams_omitted": false,
+            "replacements": 0,
+            "scans_for_arbitrary_secrets": false
+          },
+          "sanitized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "source_local_raw": {
+            "path": "raw/stale-review-control-001.stderr",
+            "result_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "stdout": {
+          "content": "{\"adapter_version\":\"exitbind-adapter-v1\",\"coverage\":{\"status\":\"exercised\",\"support\":\"supported\"},\"product_evidence\":{\"commands\":[{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"init\",\"--mode\",\"portable\",\"--root\",\".\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"97ec416dfd5f1d46f5383714f2721472f859b45a9d7cd2e9cf2b137e31f1c2c7\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"start\",\"change\",\"--goal\",\"candidate public CLI lifecycle\",\"--check-command\",\"<redacted-absolute-path:b5e6f77be438be2102aff91bb048414f26e4ed0c05b6986e84f0c35806afc018>\",\"--ledger\",\".exitbind/runs/candidate.jsonl\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"43f07fcf574a7ec04e868fb0370eb7ee8d74cd3267f0683afe5fcbbb81fe16df\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"3a0c0a673452db1b43bbc78e8b1496a72ef29de4629ea22f3e771377ebed5352\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"lead\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"scoped\",\"--artifact\",\".exitbind/artifacts/lead.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"0d69422c11183e62b0dc67a36bc96f4c9677aac1e1e61fef65193d6ea85592ec\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"worker\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"completed\",\"--artifact\",\".exitbind/artifacts/worker.md\",\"--artifact-root\",\"state\",\"--event-id\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"8f72c4fb9e267136386b7d9825ab05eb229b8f2ca1e3c5507a2b7c7dd5b88837\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"observe-check\",\".exitbind/runs/candidate.jsonl\",\"--target\",\"06ea60d364c7ee5ad6999fa00f3f424cd2282732b60eb21de6fcec0c42a49997\",\"--timeout-ms\",\"1000\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"32edb00e9dcbff7fc61ecbeab155d5470fa12dcc1a2908673e828801d3f24ba4\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"reviewer\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"approved\",\"--artifact\",\".exitbind/artifacts/review.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"6a16001a282cf2709010c777b1735a37b821e2d22a862accc30974e44ebc2fd1\",\"stdout_valid_utf8\":true},{\"argv\":[\"<redacted-absolute-path:6f2fb0743b3d24d11a01815dea0ad4a21f3382890d7ee130e472d5187ea6e208>\",\"run\",\"submit\",\"lead\",\".exitbind/runs/candidate.jsonl\",\"--outcome\",\"accepted\",\"--artifact\",\".exitbind/artifacts/lead-final.md\",\"--artifact-root\",\"state\",\"--config\",\"exitbind.json\"],\"returncode\":0,\"stderr\":\"<omitted-product-stderr>\",\"stderr_decode_error\":null,\"stderr_encoding\":\"utf-8\",\"stderr_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"stderr_valid_utf8\":true,\"stdout\":\"<omitted-product-stdout>\",\"stdout_decode_error\":null,\"stdout_encoding\":\"utf-8\",\"stdout_sha256\":\"219107859ec5fc7b9225918a2efbf905948dd393ca826c1ed764609e684f4666\",\"stdout_valid_utf8\":true}]},\"result\":{\"holytail\":\"NOT_APPLICABLE\",\"outcome\":\"READY\",\"reason\":\"ACCEPTED\"}}",
+          "encoding": "utf-8",
+          "original_sha256": "9e7269263d01839695f0bc06f3b1ebb3878d27a3f4ab2c1f5a416cc1f7e4e5b2",
+          "redaction": {
+            "algorithm": "absolute-path-v1",
+            "applied": true,
+            "encoded_originals_omitted": true,
+            "product_streams_omitted": true,
+            "replacements": 8,
+            "scans_for_arbitrary_secrets": false
+          },
+          "sanitized_sha256": "6ae74d19b24ff545dd1bbac74bd304c06abb8c8961b50b35caf47a855a6459f9",
+          "source_local_raw": {
+            "path": "raw/stale-review-control-001.stdout",
+            "result_sha256": "9e7269263d01839695f0bc06f3b1ebb3878d27a3f4ab2c1f5a416cc1f7e4e5b2",
+            "sha256": "9e7269263d01839695f0bc06f3b1ebb3878d27a3f4ab2c1f5a416cc1f7e4e5b2"
+          }
+        }
+      }
+    },
+    "redaction_policy": {
+      "algorithm": "absolute-path-v1",
+      "scans_for_arbitrary_secrets": false
+    }
+  },
+  "schema_version": "public-export-v2",
+  "source_run_id": "exitbind-0.17.0-candidate-20260914-55d2-a5b3"
+}
