@@ -107,6 +107,35 @@ def observed_fields(payload: Any) -> tuple[str | None, str | None, str | None]:
     )
 
 
+def observed_measurements(payload: Any, *, candidate_dependent: bool) -> dict[str, Any]:
+    """Read measurement provenance separately from expected or adapter labels."""
+    default_reason = (
+        "candidate_adapter_did_not_report_holytail_measurement"
+        if candidate_dependent
+        else "fixture_output_is_not_product_measurement"
+    )
+    fallback = {"holytail": {"status": "unavailable", "reason": default_reason}}
+    if not isinstance(payload, dict):
+        return fallback
+    measurements = payload.get("measurements")
+    if not isinstance(measurements, dict):
+        return fallback
+    holytail = measurements.get("holytail")
+    if not isinstance(holytail, dict):
+        return fallback
+    if holytail.get("status") == "measured" and holytail.get("source") == "product_observation":
+        value = holytail.get("value")
+        if value in {"LOSS", "PRESERVED"}:
+            return {"holytail": {"status": "measured", "source": "product_observation", "value": value}}
+    reason = holytail.get("reason")
+    return {
+        "holytail": {
+            "status": "unavailable",
+            "reason": reason if isinstance(reason, str) and reason else default_reason,
+        }
+    }
+
+
 def capture_environment(binary: Path | None = None) -> dict[str, Any]:
     result: dict[str, Any] = {
         "python": os.sys.version.split()[0],
@@ -125,13 +154,16 @@ def capture_environment(binary: Path | None = None) -> dict[str, Any]:
     return result
 
 
-def score_ratio(numerator: int, denominator: int) -> dict[str, Any]:
-    return {
+def score_ratio(numerator: int, denominator: int, unavailable_reason: str | None = None) -> dict[str, Any]:
+    ratio = {
         "numerator": numerator,
         "denominator": denominator,
         "percentage": round(100 * numerator / denominator, 4) if denominator else None,
         "status": "computed" if denominator else "not_computable",
     }
+    if denominator == 0 and unavailable_reason:
+        ratio["unavailable_reason"] = unavailable_reason
+    return ratio
 
 
 def aggregate_results(results: list[dict[str, Any]]) -> dict[str, Any]:
@@ -157,11 +189,14 @@ def aggregate_results(results: list[dict[str, Any]]) -> dict[str, Any]:
     def ready(item):
         return item["observed"]["outcome"] == "READY"
 
+    def holytail_measured(item):
+        return item.get("measurements", {}).get("holytail", {}).get("status") == "measured"
+
     def semantic_loss(item):
-        return item["expected"]["holytail"] == "LOSS"
+        return holytail_measured(item) and item["expected"]["holytail"] == "LOSS"
 
     def preserved(item):
-        return item["expected"]["holytail"] == "PRESERVED"
+        return holytail_measured(item) and item["expected"]["holytail"] == "PRESERVED"
 
     metrics = {
         "false_exit_rejection": panel(is_false, refused),
@@ -170,9 +205,12 @@ def aggregate_results(results: list[dict[str, Any]]) -> dict[str, Any]:
         "false_refusal": panel(is_valid, lambda item: item["observed"]["outcome"] in {"REFUSED", "BLOCKED"}),
         "outcome_classification": panel(lambda item: True, lambda item: item["classification"]["outcome_match"]),
         "reason_classification": panel(lambda item: bool(item["expected"]["reason"]), lambda item: item["classification"]["reason_match"]),
-        "holytail_preservation_recall": panel(semantic_loss, lambda item: item["observed"].get("holytail") == "LOSS"),
-        "holytail_false_alarms": panel(preserved, lambda item: item["observed"].get("holytail") == "LOSS"),
+        "holytail_preservation_recall": panel(semantic_loss, lambda item: item["measurements"]["holytail"].get("value") == "LOSS"),
+        "holytail_false_alarms": panel(preserved, lambda item: item["measurements"]["holytail"].get("value") == "LOSS"),
     }
+    for name in ("holytail_preservation_recall", "holytail_false_alarms"):
+        if metrics[name]["status"] == "not_computable":
+            metrics[name]["unavailable_reason"] = "no_supported_exercised_product_holytail_measurements"
     return {
         "metrics": metrics,
         "false_acceptance_case_ids": [item["case_id"] for item in scored if is_false(item) and ready(item)],

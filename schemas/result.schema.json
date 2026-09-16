@@ -45,6 +45,9 @@
         "holytail_match": {"type": ["boolean", "null"]}
       }
     },
+    "measurements": {
+      "$ref": "#/$defs/measurements"
+    },
     "coverage": {
       "type": "object",
       "additionalProperties": false,
@@ -66,5 +69,25 @@
       }
     },
     "command": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+  },
+  "$defs": {
+    "measurements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["holytail"],
+      "properties": {
+        "holytail": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status"],
+          "properties": {
+            "status": {"enum": ["measured", "unavailable"]},
+            "source": {"const": "product_observation"},
+            "value": {"enum": ["LOSS", "PRESERVED"]},
+            "reason": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    }
   }
 }

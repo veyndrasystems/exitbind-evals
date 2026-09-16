@@ -29,6 +29,7 @@
     "cases/false-completion-001.json", "cases/false-completion-control-001.json",
     "cases/stale-check-001.json", "cases/stale-check-control-001.json",
     "cases/semantic-loss-001.json", "cases/semantic-loss-control-001.json",
+    "cases/env-precedence-001.json", "cases/env-precedence-control-001.json",
     "cases/stale-review-001.json", "cases/stale-review-control-001.json",
     "cases/reported-observed-001.json", "cases/reported-observed-control-001.json",
     "cases/partial-completion-001.json", "cases/partial-completion-control-001.json"

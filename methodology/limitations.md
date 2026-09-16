@@ -1,7 +1,7 @@
 # Limitations and release boundary
 
 This v1 is a reproducible harness, not a claim about Exitbind's universal
-effectiveness. Twelve cases are enough to exercise the mechanics but not to
+effectiveness. Fourteen cases are enough to exercise the mechanics but not to
 represent all repositories, hosts, checks, or failure modes. The three pinned
 repositories are public corpus references; only a reviewed, deterministic
 adapter and fetched case inputs can turn a metadata case into an executed

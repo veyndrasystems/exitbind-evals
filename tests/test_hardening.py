@@ -119,6 +119,68 @@ class HardeningTests(unittest.TestCase):
             self.assertEqual(result["coverage"], {"support": "unsupported", "status": "unexercised"})
             self.assertIsNotNone(result["observed"]["json_parse_error"])
 
+    def test_adapter_holytail_label_without_measurement_is_not_scored(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            adapter_script = root / "adapter.py"
+            adapter_script.write_text(
+                "import json; print(json.dumps({"
+                "'adapter_version':'v1',"
+                "'result':{'outcome':'READY','reason':'ACCEPTED','holytail':'PRESERVED'},"
+                "'measurements':{'holytail':{'status':'unavailable','reason':'adapter_label_only'}},"
+                "'product_evidence':{'commands':[]},"
+                "'coverage':{'support':'supported','status':'exercised'}}))",
+                encoding="utf-8",
+            )
+            adapter_path = root / "adapter.json"
+            adapter_path.write_text(json.dumps({"adapter": "adapter.py", "commands": {"case": [sys.executable, "{adapter}"]}}), encoding="utf-8")
+            case = {"id": "case", "ground_truth": {"expected_outcome": "READY", "expected_reason": "ACCEPTED", "expected_exit_code": 0, "holytail_expected": "PRESERVED"}}
+            result = run(case, "/bin/true", root / "run", json.loads(adapter_path.read_text()), 5, adapter_path)
+            self.assertEqual(result["observed"]["holytail"], "PRESERVED")
+            self.assertEqual(result["classification"]["holytail_match"], None)
+            self.assertEqual(result["measurements"]["holytail"]["status"], "unavailable")
+            false_alarms = aggregate_results([result])["metrics"]["holytail_false_alarms"]
+            self.assertEqual(false_alarms["denominator"], 0)
+            self.assertEqual(false_alarms["status"], "not_computable")
+            self.assertEqual(false_alarms["unavailable_reason"], "no_supported_exercised_product_holytail_measurements")
+
+    def test_fixture_holytail_label_is_not_product_measurement(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            fixture = root / "fixture.py"
+            fixture.write_text("import json; print(json.dumps({'outcome':'REFUSED','reason':'SEMANTIC_INVARIANT_LOST','holytail':'LOSS','fixture':True}))", encoding="utf-8")
+            case = {"id": "case", "scenario": {"execution": {"argv": [sys.executable, str(fixture)]}}, "ground_truth": {"expected_outcome": "REFUSED", "expected_reason": "SEMANTIC_INVARIANT_LOST", "expected_exit_code": 0, "holytail_expected": "LOSS"}}
+            result = run(case, "/bin/true", root / "run", None, 5)
+            self.assertEqual(result["observed"]["holytail"], "LOSS")
+            self.assertEqual(result["classification"]["holytail_match"], None)
+            self.assertEqual(result["measurements"]["holytail"], {"status": "unavailable", "reason": "fixture_output_is_not_product_measurement"})
+            recall = aggregate_results([result])["metrics"]["holytail_preservation_recall"]
+            self.assertEqual(recall["denominator"], 0)
+            self.assertEqual(recall["status"], "not_computable")
+
+    def test_measured_holytail_provenance_is_metric_eligible(self) -> None:
+        base = {
+            "coverage": {"support": "supported", "status": "exercised"},
+            "observed": {"outcome": "READY"},
+            "classification": {"outcome_match": True, "reason_match": True, "exit_code_match": True, "holytail_match": True},
+        }
+        loss = {
+            **copy.deepcopy(base),
+            "case_id": "loss",
+            "expected": {"outcome": "REFUSED", "reason": "SEMANTIC_INVARIANT_LOST", "holytail": "LOSS"},
+            "observed": {"outcome": "REFUSED"},
+            "measurements": {"holytail": {"status": "measured", "source": "product_observation", "value": "LOSS"}},
+        }
+        false_alarm = {
+            **copy.deepcopy(base),
+            "case_id": "preserved",
+            "expected": {"outcome": "READY", "reason": "ACCEPTED", "holytail": "PRESERVED"},
+            "measurements": {"holytail": {"status": "measured", "source": "product_observation", "value": "LOSS"}},
+        }
+        metrics = aggregate_results([loss, false_alarm])["metrics"]
+        self.assertEqual(metrics["holytail_preservation_recall"], {"numerator": 1, "denominator": 1, "percentage": 100.0, "status": "computed"})
+        self.assertEqual(metrics["holytail_false_alarms"], {"numerator": 1, "denominator": 1, "percentage": 100.0, "status": "computed"})
+
     def test_suite_captures_one_implementation_hash_for_every_case(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

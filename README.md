@@ -12,8 +12,8 @@ ground truth.
 
 ## Status
 
-The v1 harness, 12-case paired seed corpus, and versioned `v0.17.0` CLI adapter
-are implemented. An exact-candidate 12-case result is now published in
+The v1 harness, 14-case paired seed corpus, and versioned `v0.17.0` CLI adapter
+are implemented. An exact-candidate 12-case result is published in
 [`results/published/`](results/published/exitbind-0.17.0-candidate-20260914-55d2-summary.md).
 Publication is the accepted evaluation milestone, not an all-pass claim; the
 result records its supported coverage, unsupported cases, mismatch, and
@@ -105,8 +105,8 @@ panels:
 | False Refusal | valid controls refused or blocked / valid controls | lower |
 | Outcome classification | exact outcome matches / supported, exercised cases | higher |
 | Reason classification | exact reason matches / supported, exercised cases with an expected reason | higher |
-| Holytail preservation recall | seeded semantic losses detected / semantic-loss cases | higher |
-| Holytail false alarms | preserved controls reported as loss / preservation controls | lower |
+| Holytail preservation recall | measured semantic losses detected / semantic-loss cases with product Holytail measurement | higher |
+| Holytail false alarms | measured preserved controls reported as loss / preservation controls with product Holytail measurement | lower |
 
 There is no combined “magic score.” Empty denominators are reported as
 `not_computable`, never as zero or one. No LLM is used as the sole oracle.
@@ -124,9 +124,9 @@ seed cases are protocol-level deterministic scenarios mapped to those sources;
 repository-specific adapters and any fetched working trees are candidate-run
 inputs, not product files.
 
-The initial corpus intentionally has 12 cases (six adversarial families and a
-nearby valid control for each). It is smaller than the eventual 40+ target
-because padding ungrounded mutations would make the result less credible.
+The current corpus has 14 cases: seven adversarial families and a nearby valid
+control for each. It remains smaller than the eventual 40+ target because
+padding ungrounded mutations would make the result less credible.
 
 ## Limitations
 

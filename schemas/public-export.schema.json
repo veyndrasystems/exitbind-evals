@@ -181,7 +181,8 @@
         "numerator": {"type": "integer", "minimum": 0},
         "denominator": {"type": "integer", "minimum": 0},
         "percentage": {"type": ["number", "null"]},
-        "status": {"enum": ["computed", "not_computable"]}
+        "status": {"enum": ["computed", "not_computable"]},
+        "unavailable_reason": {"type": "string", "minLength": 1}
       },
       "allOf": [
         {
@@ -190,7 +191,8 @@
             "properties": {
               "percentage": {"type": "null"},
               "status": {"const": "not_computable"}
-            }
+            },
+            "required": ["percentage", "status"]
           }
         },
         {
@@ -199,7 +201,9 @@
             "properties": {
               "percentage": {"type": "number", "minimum": 0, "maximum": 100},
               "status": {"const": "computed"}
-            }
+            },
+            "required": ["percentage", "status"],
+            "not": {"required": ["unavailable_reason"]}
           }
         }
       ]
@@ -215,6 +219,7 @@
         "expected": {"$ref": "#/$defs/expected"},
         "observed": {"$ref": "#/$defs/observed"},
         "classification": {"$ref": "#/$defs/classification"},
+        "measurements": {"$ref": "#/$defs/measurements"},
         "coverage": {"$ref": "#/$defs/coverage"},
         "command": {"type": "array", "items": {"type": "string"}, "minItems": 1},
         "local_raw": {"$ref": "#/$defs/localRaw"}
@@ -254,6 +259,24 @@
         "reason_match": {"type": "boolean"},
         "exit_code_match": {"type": "boolean"},
         "holytail_match": {"type": ["boolean", "null"]}
+      }
+    },
+    "measurements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["holytail"],
+      "properties": {
+        "holytail": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status"],
+          "properties": {
+            "status": {"enum": ["measured", "unavailable"]},
+            "source": {"const": "product_observation"},
+            "value": {"enum": ["LOSS", "PRESERVED"]},
+            "reason": {"type": "string", "minLength": 1}
+          }
+        }
       }
     },
     "localRaw": {

@@ -21,7 +21,9 @@ The seed corpus covers:
 3. a semantic invariant removed while ordinary checks remain green;
 4. a review reused after the subject changes;
 5. reported evidence with no valid local observation;
-6. partial work presented as complete.
+6. partial work presented as complete;
+7. an explicit configuration precedence rule violated while ordinary
+   functional execution still succeeds.
 
 Each family has a nearby valid control. The controls are necessary because a
 system that rejects every result must not score well.

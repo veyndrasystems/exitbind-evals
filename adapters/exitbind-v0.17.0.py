@@ -277,6 +277,12 @@ class Adapter:
         payload: dict[str, Any] = {
             "adapter_version": ADAPTER_VERSION,
             "result": {"outcome": outcome, "reason": reason, "holytail": holytail},
+            "measurements": {
+                "holytail": {
+                    "status": "unavailable",
+                    "reason": "v0.17.0_adapter_did_not_observe_holytail_judgment",
+                }
+            },
             "product_evidence": {"commands": [command.as_json() for command in self.commands]},
             "coverage": coverage or {"support": "supported", "status": "exercised"},
         }
@@ -465,6 +471,8 @@ def main(argv: list[str]) -> int:
             return unsupported(adapter, family)
         if case_id in {"semantic-loss-control-001", "partial-completion-control-001"}:
             return supported_checked(adapter, "/bin/true", holytail="PRESERVED")
+        if case_id in {"env-precedence-001", "env-precedence-control-001"}:
+            return unsupported(adapter, "env-precedence")
         print(f"unsupported case ID: {case_id}", file=sys.stderr)
         return 64
     except (OSError, RuntimeError, ValueError) as error:

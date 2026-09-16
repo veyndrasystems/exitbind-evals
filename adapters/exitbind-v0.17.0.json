@@ -11,6 +11,8 @@
     "reported-observed-control-001": ["/usr/bin/python3", "{adapter}", "{binary}", "{case_id}", "{workdir}"],
     "semantic-loss-001": ["/usr/bin/python3", "{adapter}", "{binary}", "{case_id}", "{workdir}"],
     "semantic-loss-control-001": ["/usr/bin/python3", "{adapter}", "{binary}", "{case_id}", "{workdir}"],
+    "env-precedence-001": ["/usr/bin/python3", "{adapter}", "{binary}", "{case_id}", "{workdir}"],
+    "env-precedence-control-001": ["/usr/bin/python3", "{adapter}", "{binary}", "{case_id}", "{workdir}"],
     "stale-check-001": ["/usr/bin/python3", "{adapter}", "{binary}", "{case_id}", "{workdir}"],
     "stale-check-control-001": ["/usr/bin/python3", "{adapter}", "{binary}", "{case_id}", "{workdir}"],
     "stale-review-001": ["/usr/bin/python3", "{adapter}", "{binary}", "{case_id}", "{workdir}"],

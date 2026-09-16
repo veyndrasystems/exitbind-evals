@@ -859,6 +859,25 @@ def _observed(value: Any, label: str) -> None:
     _number(value["duration_ms"], f"{label}.duration_ms", minimum=0)
 
 
+def _measurements(value: Any, label: str) -> None:
+    _exact(value, {"holytail"}, label)
+    holytail = value["holytail"]
+    if not isinstance(holytail, dict):
+        raise ValueError(f"{label}.holytail must be an object")
+    status = holytail.get("status")
+    if status == "measured":
+        _exact(holytail, {"status", "source", "value"}, f"{label}.holytail")
+        if holytail["source"] != "product_observation":
+            raise ValueError(f"{label}.holytail.source is invalid")
+        if holytail["value"] not in {"LOSS", "PRESERVED"}:
+            raise ValueError(f"{label}.holytail.value is invalid")
+    elif status == "unavailable":
+        _exact(holytail, {"status", "reason"}, f"{label}.holytail")
+        _string(holytail["reason"], f"{label}.holytail.reason", nonempty=True)
+    else:
+        raise ValueError(f"{label}.holytail.status is invalid")
+
+
 def _classification(value: Any, label: str) -> None:
     _exact(value, {"outcome_match", "reason_match", "exit_code_match", "holytail_match"}, label)
     for key in ("outcome_match", "reason_match", "exit_code_match"):
@@ -870,15 +889,22 @@ def _classification(value: Any, label: str) -> None:
 def _derived_classification(case: dict[str, Any]) -> dict[str, Any]:
     expected = case["expected"]
     observed = case["observed"]
+    measured_holytail = case.get("measurements", {}).get("holytail", {})
+    if expected["holytail"] == "NOT_APPLICABLE":
+        holytail_match = None
+    elif measured_holytail.get("status") == "measured":
+        holytail_match = measured_holytail.get("value") == expected["holytail"]
+    else:
+        holytail_match = (
+            None
+            if "measurements" in case
+            else observed["holytail"] == expected["holytail"]
+        )
     return {
         "outcome_match": observed["outcome"] == expected["outcome"],
         "reason_match": observed["reason"] == expected["reason"],
         "exit_code_match": observed["exit_code"] == expected["exit_code"],
-        "holytail_match": (
-            None
-            if expected["holytail"] == "NOT_APPLICABLE"
-            else observed["holytail"] == expected["holytail"]
-        ),
+        "holytail_match": holytail_match,
     }
 
 
@@ -892,7 +918,7 @@ def _raw(value: Any, label: str) -> None:
 
 
 def _ratio(value: Any, label: str) -> None:
-    _exact(value, {"numerator", "denominator", "percentage", "status"}, label)
+    _known(value, {"numerator", "denominator", "percentage", "status", "unavailable_reason"}, {"numerator", "denominator", "percentage", "status"}, label)
     _integer(value["numerator"], f"{label}.numerator", minimum=0)
     _integer(value["denominator"], f"{label}.denominator", minimum=0)
     if value["numerator"] > value["denominator"]:
@@ -902,7 +928,11 @@ def _ratio(value: Any, label: str) -> None:
     if value["denominator"] == 0:
         if value["status"] != "not_computable" or value["percentage"] is not None:
             raise ValueError(f"{label} zero denominator must be not_computable")
+        if "unavailable_reason" in value:
+            _string(value["unavailable_reason"], f"{label}.unavailable_reason", nonempty=True)
     else:
+        if "unavailable_reason" in value:
+            raise ValueError(f"{label} computed ratio must not include unavailable_reason")
         expected_percentage = round(100 * value["numerator"] / value["denominator"], 4)
         if value["status"] != "computed" or not isinstance(value["percentage"], (int, float)) or isinstance(value["percentage"], bool) or not 0 <= value["percentage"] <= 100 or value["percentage"] != expected_percentage:
             raise ValueError(f"{label} computed ratio is invalid")
@@ -960,10 +990,16 @@ def _validate_public_protocol_shape(public: dict[str, Any], candidate_dependent:
                 "holytail": observed["holytail"],
             }:
                 raise ValueError(f"candidate evidence {case_id} result disagrees with observed fields")
+            if "measurements" in payload:
+                _measurements(payload["measurements"], f"{case_id} candidate measurements")
+                if payload["measurements"] != artifact.get("measurements"):
+                    raise ValueError(f"candidate evidence {case_id} measurements disagree with observed fields")
             if payload["coverage"] != artifact["coverage"]:
                 raise ValueError(f"candidate evidence {case_id} coverage disagrees with observed fields")
         else:
-            if payload.get("fixture") is not True or set(payload) != {"outcome", "reason", "holytail", "fixture"}:
+            allowed = {"outcome", "reason", "holytail", "fixture", "checks"}
+            required = {"outcome", "reason", "holytail", "fixture"}
+            if payload.get("fixture") is not True or not required <= set(payload) or not set(payload) <= allowed:
                 raise ValueError(f"fixture evidence {case_id} has candidate adapter stdout shape")
             if {
                 "outcome": payload["outcome"],
@@ -1083,7 +1119,7 @@ def validate_public_export(public: Any) -> None:
     for case_id, case in artifacts["cases"].items():
         if not isinstance(case_id, str) or not isinstance(case, dict) or "local_raw" not in case:
             raise ValueError("public case result is invalid")
-        _known(case, {"schema_version", "run_id", "case_id", "expected", "observed", "classification", "coverage", "command", "local_raw"}, {"schema_version", "run_id", "case_id", "expected", "observed", "classification", "coverage", "local_raw"}, f"public case {case_id}")
+        _known(case, {"schema_version", "run_id", "case_id", "expected", "observed", "classification", "measurements", "coverage", "command", "local_raw"}, {"schema_version", "run_id", "case_id", "expected", "observed", "classification", "coverage", "local_raw"}, f"public case {case_id}")
         if case["schema_version"] != "result-v1":
             raise ValueError(f"public case {case_id} schema version is invalid")
         _string(case["run_id"], f"public case {case_id}.run_id", nonempty=True)
@@ -1091,6 +1127,8 @@ def validate_public_export(public: Any) -> None:
             raise ValueError(f"public case {case_id} identity is not bound to the source run")
         _expected(case["expected"], f"public case {case_id}.expected")
         _observed(case["observed"], f"public case {case_id}.observed")
+        if "measurements" in case:
+            _measurements(case["measurements"], f"public case {case_id}.measurements")
         _classification(case["classification"], f"public case {case_id}.classification")
         if case["classification"] != _derived_classification(case):
             raise ValueError(f"public case {case_id}.classification is not derived from evidence")
