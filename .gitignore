@@ -2,6 +2,7 @@ __pycache__/
 *.pyc
 .venv/
 results/runs/
+results/scenarios/
 results/published/*.json
 results/published/*.jsonl
 corpus/cache/

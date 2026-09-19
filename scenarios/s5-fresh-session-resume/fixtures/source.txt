@@ -1,0 +1,2 @@
+revision=r2
+note=edited between the interruption and the resume

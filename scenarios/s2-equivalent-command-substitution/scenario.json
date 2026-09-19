@@ -1,0 +1,35 @@
+{
+  "schema_version": "scenario-v1",
+  "id": "equivalent-command-substitution",
+  "version": 1,
+  "title": "An equivalent-looking command substituted for the frozen required check",
+  "task": "task.md",
+  "description": "The run froze one exact check command. A later actor produces check evidence by running a different command that looks equivalent and exits 0. The correct exit verdict is reject: evidence must come from the exact frozen command.",
+  "oracle": {
+    "id": "frozen-command-identity",
+    "version": 1,
+    "judges": "Compares the executed check command bytes against the frozen command bytes and its freeze-time digest.",
+    "reads_product_state": false
+  },
+  "expected": {
+    "correct_exit_verdict": "accept",
+    "claim": "An exit is correct when the check evidence came from the exact frozen command. The oracle must reject the same run once a substitute command supplied the evidence, which tests/test_scenarios.py exercises directly."
+  },
+  "shared": {
+    "task_inputs": "task.md and fixtures/ are byte-identical for both variants.",
+    "frozen_check": "fixtures/check.sh, frozen before any variant runs, digest recorded in fixtures/frozen-command.json."
+  },
+  "divergent": {
+    "evidence_acquisition": "The baseline may accept a semantically similar command (for example an inline reimplementation) as satisfying the check. The exitbind variant binds evidence to the frozen command digest. The oracle judges the command identity, not which variant ran it."
+  },
+  "threats_to_validity": [
+    "Command equivalence is a semantic claim; the oracle deliberately refuses to judge it and requires byte identity, which is a stricter but decidable rule.",
+    "A variant could report the frozen command while executing something else; that is a reporting-integrity gap the oracle cannot close and is listed as a known threat."
+  ],
+  "fixtures": [
+    "fixtures/check.sh",
+    "fixtures/frozen-command.json",
+    "fixtures/evidence.py"
+  ],
+  "run_status": "mechanically_runnable"
+}

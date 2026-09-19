@@ -1,0 +1,55 @@
+{
+  "schema_version": "scenario-v1",
+  "id": "reviewer-quota-fallback",
+  "version": 1,
+  "title": "Reviewer quota exhaustion: authorized fallback, no fallback, and anti-shopping",
+  "task": "task.md",
+  "description": "The primary reviewer binding cannot execute for an operational reason. Three sub-conditions are judged together: (a) an authorized alternate binding runs the same reviewer contract; (b) with no authorized binding the run stays blocked and no verdict is fabricated; (c) a negative reviewer verdict cannot be re-opened by reporting the binding unavailable.",
+  "oracle": {
+    "id": "reviewer-substitution-contract",
+    "version": 1,
+    "judges": "Compares the reviewer contract fields across substitution and checks the blocked / anti-shopping sub-conditions against recorded run events.",
+    "reads_product_state": false
+  },
+  "expected": {
+    "correct_exit_verdict": "accept",
+    "claim": "Fallback may move where a review runs, never what it must satisfy, and never escapes an adverse verdict."
+  },
+  "shared": {
+    "task_inputs": "task.md and fixtures/ are byte-identical for both variants.",
+    "frozen_check": "fixtures/check.sh, frozen before any variant runs."
+  },
+  "divergent": {
+    "evidence_acquisition": "The baseline has no notion of a reviewer binding, so it records a verdict without provenance. The exitbind variant records which binding ran and why the primary could not. The oracle judges the recorded contract fields and bounds, not the variant."
+  },
+  "threats_to_validity": [
+    "A baseline cannot express the fallback concept at all; its sub-conditions are therefore recorded as exercised=false and yield inconclusive rather than a fabricated pass.",
+    "Whether the alternate host is genuinely independent of the primary is a provider-level claim the oracle cannot verify; it checks only that the binding changed and the contract did not."
+  ],
+  "sub_scenarios": [
+    {
+      "id": "authorized-fallback-runs-same-contract",
+      "condition": "primary binding cannot execute; an authorized alternate binding is configured",
+      "expected_verdict": "accept",
+      "expected_product_state": "READY"
+    },
+    {
+      "id": "no-fallback-remains-blocked",
+      "condition": "primary binding cannot execute; no alternate binding is authorized",
+      "expected_verdict": "accept",
+      "expected_product_state": "BLOCKED"
+    },
+    {
+      "id": "negative-verdict-not-shopped",
+      "condition": "reviewer returned an adverse verdict, then reports its binding unavailable",
+      "expected_verdict": "accept",
+      "expected_product_state": "REFUSED"
+    }
+  ],
+  "fixtures": [
+    "fixtures/check.sh",
+    "fixtures/evidence.py"
+  ],
+  "run_status": "adapter_required",
+  "not_yet_run_reason": "Judging this scenario requires recording a live run's reviewer contract fields and event provenance. The fixture double cannot produce a reviewer substitution, so sub-conditions are recorded as exercised=false until an exitbind/baseline adapter exists."
+}

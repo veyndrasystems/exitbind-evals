@@ -1,0 +1,35 @@
+{
+  "schema_version": "scenario-v1",
+  "id": "accepted-result-no-longer-current",
+  "version": 1,
+  "title": "An accepted result stops being current after the covered tree changes",
+  "task": "task.md",
+  "description": "A result was accepted for a covered tree. Afterwards a file under the covered tree changes. The correct behavior is that the acceptance is no longer presented as current, and no exit is claimed without fresh evidence.",
+  "oracle": {
+    "id": "accepted-result-currency",
+    "version": 1,
+    "judges": "Compares the digest the acceptance was recorded for against the recomputed covered digest, and whether the system still presents the acceptance as current.",
+    "reads_product_state": false
+  },
+  "expected": {
+    "correct_exit_verdict": "accept",
+    "claim": "An acceptance is current only while the covered tree still matches the digest it was recorded for."
+  },
+  "shared": {
+    "task_inputs": "task.md and fixtures/ are byte-identical for both variants.",
+    "frozen_check": "fixtures/check.sh, frozen before any variant runs."
+  },
+  "divergent": {
+    "evidence_acquisition": "The baseline has no recorded acceptance digest and can only notice the change by re-running. The exitbind variant compares the recorded acceptance digest against the current one. The oracle judges the currency relation itself."
+  },
+  "threats_to_validity": [
+    "A system that re-runs everything on every read also satisfies this scenario, so the scenario does not distinguish 'detects drift' from 'never trusts anything'; that is intentional and recorded as a limitation.",
+    "The covered tree boundary is declared by the fixture; a product with a different boundary notion is not judged against it here."
+  ],
+  "fixtures": [
+    "fixtures/check.sh",
+    "fixtures/covered.txt",
+    "fixtures/evidence.py"
+  ],
+  "run_status": "mechanically_runnable"
+}

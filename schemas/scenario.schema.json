@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://veyndrasystems.github.io/exitbind-evals/schemas/scenario-v1.schema.json",
+  "title": "Exitbind external-trust scenario",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "version", "title", "task", "oracle", "expected", "shared", "divergent", "threats_to_validity"],
+  "properties": {
+    "schema_version": {"const": "scenario-v1"},
+    "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]+$"},
+    "version": {"type": "integer", "minimum": 1},
+    "title": {"type": "string", "minLength": 1},
+    "task": {"type": "string", "minLength": 1},
+    "description": {"type": "string", "minLength": 1},
+    "oracle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]+$"},
+        "version": {"type": "integer", "minimum": 1},
+        "judges": {"type": "string", "minLength": 1},
+        "reads_product_state": {"type": "boolean"}
+      }
+    },
+    "expected": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["correct_exit_verdict", "claim"],
+      "properties": {
+        "correct_exit_verdict": {"enum": ["accept", "reject"]},
+        "claim": {"type": "string", "minLength": 1}
+      }
+    },
+    "shared": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["task_inputs", "frozen_check"],
+      "properties": {
+        "task_inputs": {"type": "string", "minLength": 1},
+        "frozen_check": {"type": "string", "minLength": 1}
+      }
+    },
+    "divergent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidence_acquisition"],
+      "properties": {
+        "evidence_acquisition": {"type": "string", "minLength": 1}
+      }
+    },
+    "threats_to_validity": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "minItems": 1
+    },
+    "sub_scenarios": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "condition", "expected_verdict", "expected_product_state"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]+$"},
+          "condition": {"type": "string", "minLength": 1},
+          "expected_verdict": {"enum": ["accept", "reject"]},
+          "expected_product_state": {"enum": ["READY", "REFUSED", "BLOCKED", "NOT_APPLICABLE"]}
+        }
+      }
+    },
+    "fixtures": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^(?!\\.\\.)(?!/).+$"}
+    },
+    "run_status": {
+      "enum": ["mechanically_runnable", "adapter_required", "NOT_YET_RUN"]
+    },
+    "not_yet_run_reason": {"type": "string", "minLength": 1}
+  }
+}

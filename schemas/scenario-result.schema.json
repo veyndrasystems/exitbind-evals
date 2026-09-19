@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://veyndrasystems.github.io/exitbind-evals/schemas/scenario-result-v1.schema.json",
+  "title": "Exitbind external-trust scenario result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "scenario_id",
+    "scenario_version",
+    "scenario_digest",
+    "product_commit",
+    "variant",
+    "host_model",
+    "outcome",
+    "oracle",
+    "retries",
+    "human_interventions",
+    "elapsed_ms",
+    "tokens",
+    "cost_usd",
+    "observations",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": {"const": "scenario-result-v1"},
+    "scenario_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]+$"},
+    "scenario_version": {"type": "integer", "minimum": 1},
+    "scenario_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "product_commit": {
+      "anyOf": [
+        {"type": "string", "pattern": "^[a-f0-9]{40}$"},
+        {"type": "null"}
+      ]
+    },
+    "evaluator_commit": {"type": "string", "pattern": "^[a-f0-9]{40}$"},
+    "variant": {"enum": ["baseline", "exitbind", "fixture"]},
+    "host_model": {"$ref": "#/$defs/measuredOrUnavailable"},
+    "outcome": {"enum": ["pass", "fail", "inconclusive"]},
+    "oracle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version", "verdict", "reads_product_state"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]+$"},
+        "version": {"type": "integer", "minimum": 1},
+        "verdict": {"enum": ["accept", "reject", "indeterminate"]},
+        "reads_product_state": {"type": "boolean"},
+        "reason": {"type": "string", "minLength": 1},
+        "inputs_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "reported_product_state": {"enum": ["READY", "REFUSED", "BLOCKED", "NOT_APPLICABLE", null]},
+    "retries": {"$ref": "#/$defs/countOrUnavailable"},
+    "human_interventions": {"$ref": "#/$defs/countOrUnavailable"},
+    "elapsed_ms": {"$ref": "#/$defs/measuredOrUnavailable"},
+    "tokens": {"$ref": "#/$defs/measuredOrUnavailable"},
+    "cost_usd": {"$ref": "#/$defs/measuredOrUnavailable"},
+    "observations": {
+      "type": "array",
+      "items": {"type": "string"},
+      "minItems": 1
+    },
+    "limitations": {
+      "type": "array",
+      "items": {"type": "string"},
+      "minItems": 1
+    }
+  },
+  "$defs": {
+    "measuredOrUnavailable": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "value"],
+          "properties": {
+            "status": {"const": "measured"},
+            "value": {"type": ["number", "string"]},
+            "unit": {"type": "string"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "reason"],
+          "properties": {
+            "status": {"const": "unavailable"},
+            "reason": {"type": "string", "minLength": 1}
+          }
+        }
+      ]
+    },
+    "countOrUnavailable": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "value"],
+          "properties": {
+            "status": {"const": "measured"},
+            "value": {"type": "integer", "minimum": 0}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "reason"],
+          "properties": {
+            "status": {"const": "unavailable"},
+            "reason": {"type": "string", "minLength": 1}
+          }
+        }
+      ]
+    }
+  }
+}

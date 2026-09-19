@@ -3,10 +3,11 @@
 
 from __future__ import annotations
 
+import argparse
+import hashlib
 import json
 import re
 import sys
-import argparse
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -94,6 +95,56 @@ if args.public_export:
         validate_public_export(json.loads(args.public_export.read_text(encoding="utf-8")))
     except Exception as error:
         errors.append(f"{args.public_export}: invalid public export: {error}")
+
+# External-trust scenarios: definition, declared fixtures, and oracle wiring.
+scenario_root = ROOT / "scenarios"
+scenario_paths = sorted(scenario_root.glob("*/scenario.json"))
+scenario_ids: set[str] = set()
+for scenario_path in scenario_paths:
+    scenario = load(scenario_path)
+    if not isinstance(scenario, dict):
+        continue
+    try:
+        validate_schema_document(scenario, schemas["scenario.schema.json"])
+    except (KeyError, ValueError) as error:
+        errors.append(f"{scenario_path.relative_to(ROOT)}: scenario schema validation failed: {error}")
+        continue
+    if scenario["id"] in scenario_ids:
+        errors.append(f"{scenario_path}: duplicate scenario id {scenario['id']}")
+    scenario_ids.add(scenario["id"])
+    task = scenario_root / scenario_path.parent.name / scenario["task"]
+    if not task.is_file():
+        errors.append(f"{scenario_path}: task file is missing: {scenario['task']}")
+    for relative in scenario.get("fixtures", []):
+        if not (scenario_path.parent / relative).is_file():
+            errors.append(f"{scenario_path}: declared fixture is missing: {relative}")
+    oracle = scenario["oracle"]
+    if oracle.get("reads_product_state") is not False:
+        errors.append(f"{scenario_path}: an oracle must not declare reads_product_state true")
+    if scenario.get("run_status") == "adapter_required" and not scenario.get("not_yet_run_reason"):
+        errors.append(f"{scenario_path}: adapter_required scenario needs a not_yet_run_reason")
+    if scenario.get("run_status") == "NOT_YET_RUN" and not scenario.get("not_yet_run_reason"):
+        errors.append(f"{scenario_path}: NOT_YET_RUN scenario needs a not_yet_run_reason")
+
+# The frozen-command digest must match its own command text.
+frozen_path = (
+    scenario_root
+    / "s2-equivalent-command-substitution/fixtures/frozen-command.json"
+)
+if frozen_path.is_file():
+    frozen = load(frozen_path)
+    if isinstance(frozen, dict):
+        command = frozen.get("frozen_command")
+        recorded = frozen.get("frozen_command_digest")
+        if not isinstance(command, str) or not isinstance(recorded, str):
+            errors.append(f"{frozen_path}: frozen command identity is incomplete")
+        else:
+            actual = hashlib.sha256(command.encode("utf-8")).hexdigest()
+            if actual != recorded:
+                errors.append(
+                    f"{frozen_path}: frozen_command_digest does not match sha256(frozen_command)"
+                )
+
 
 if errors:
     print("validation failed")

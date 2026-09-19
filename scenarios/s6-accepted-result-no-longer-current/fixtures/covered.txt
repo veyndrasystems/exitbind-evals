@@ -1,0 +1,2 @@
+state=accepted
+note=this file changed after the acceptance was recorded

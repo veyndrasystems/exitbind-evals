@@ -1,0 +1,5 @@
+{
+  "frozen_command": "sh check.sh",
+  "frozen_command_digest": "860140bda5d6cbf77da03b0f6767b2932aa871a902d07928e97c85fc565b4b75",
+  "note": "frozen_command_digest is sha256 of the exact frozen_command bytes; tools/validate.py recomputes and checks it."
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": "scenario-v1",
+  "id": "stale-review-after-covered-change",
+  "version": 1,
+  "title": "Review approval reused after a covered result changes",
+  "task": "task.md",
+  "description": "A reviewer approves the current worker result. Afterwards a file covered by the frozen functional check changes without a new worker submission. The correct exit verdict is reject: the approval no longer binds to the current subject.",
+  "oracle": {
+    "id": "covered-digest-binding",
+    "version": 1,
+    "judges": "Recomputes the covered-digest over the fixture tree at decision time and compares it with the digest the approval was recorded against.",
+    "reads_product_state": false
+  },
+  "expected": {
+    "correct_exit_verdict": "accept",
+    "claim": "An exit is correct when the recorded approval still binds to the current covered digest. The oracle must reject the same evidence once a covered file changes, which tests/test_scenarios.py exercises directly."
+  },
+  "shared": {
+    "task_inputs": "task.md and fixtures/ are byte-identical for both variants.",
+    "frozen_check": "sh check.sh (see fixtures/check.sh), frozen before any variant runs."
+  },
+  "divergent": {
+    "evidence_acquisition": "The baseline relies on the agent's own recollection that review happened. The exitbind variant reads the recorded approval digest and the current covered digest from the run record. Both must satisfy the same oracle."
+  },
+  "threats_to_validity": [
+    "A baseline could reject by accident; the oracle therefore requires evidence of the binding, not merely a rejection.",
+    "Digest normalization (line endings, mode bits) could differ between variants; the oracle canonicalizes content only and ignores file modes."
+  ],
+  "fixtures": [
+    "fixtures/check.sh",
+    "fixtures/source.txt",
+    "fixtures/evidence.py"
+  ],
+  "run_status": "mechanically_runnable"
+}

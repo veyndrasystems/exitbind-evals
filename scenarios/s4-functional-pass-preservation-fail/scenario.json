@@ -1,0 +1,36 @@
+{
+  "schema_version": "scenario-v1",
+  "id": "functional-pass-preservation-fail",
+  "version": 1,
+  "title": "Functional check passes while a preservation invariant fails",
+  "task": "task.md",
+  "description": "The frozen functional check exits 0 because the ordinary behavior is intact, but a declared invariant the change was supposed to preserve no longer holds. The correct exit verdict is reject.",
+  "oracle": {
+    "id": "functional-pass-preservation-fail",
+    "version": 1,
+    "judges": "Independently evaluates the declared invariant on the fixture and reads the frozen functional check's exit code.",
+    "reads_product_state": false
+  },
+  "expected": {
+    "correct_exit_verdict": "reject",
+    "claim": "A green functional check over a broken invariant is not a correct exit."
+  },
+  "shared": {
+    "task_inputs": "task.md and fixtures/ are byte-identical for both variants.",
+    "frozen_check": "fixtures/check.sh (functional) and fixtures/invariant.sh (preservation), both frozen before any variant runs."
+  },
+  "divergent": {
+    "evidence_acquisition": "The baseline observes only the functional check. The exitbind variant additionally requires preservation evidence. The oracle evaluates the invariant itself, so a baseline that happens to reject for another reason still has to satisfy the same invariant test to be accepted."
+  },
+  "threats_to_validity": [
+    "The invariant is a fixture-level assertion, not a product claim; a product that passes this scenario proves only that it wired the invariant into its evidence set.",
+    "A failing invariant checker is not proof of a broken product, so the oracle distinguishes 'invariant violated' from 'invariant checker failed' and treats the latter as indeterminate."
+  ],
+  "fixtures": [
+    "fixtures/check.sh",
+    "fixtures/invariant.sh",
+    "fixtures/precedence.md",
+    "fixtures/evidence.py"
+  ],
+  "run_status": "mechanically_runnable"
+}

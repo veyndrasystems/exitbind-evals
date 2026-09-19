@@ -1,0 +1,35 @@
+{
+  "schema_version": "scenario-v1",
+  "id": "fresh-session-resume",
+  "version": 1,
+  "title": "Fresh session/process resume reuses only still-valid evidence",
+  "task": "task.md",
+  "description": "A run is interrupted after some evidence is recorded. A new process resumes it after a covered file changed. The correct behavior is to reuse only evidence that still binds to the current subject and to re-acquire the rest.",
+  "oracle": {
+    "id": "resume-valid-evidence-only",
+    "version": 1,
+    "judges": "Compares each reused evidence item's bound digest against the current covered digest; any reuse across a changed digest is a reject.",
+    "reads_product_state": false
+  },
+  "expected": {
+    "correct_exit_verdict": "accept",
+    "claim": "Resume may reuse recorded evidence only while it still binds to the current subject."
+  },
+  "shared": {
+    "task_inputs": "task.md and fixtures/ are byte-identical for both variants.",
+    "frozen_check": "fixtures/check.sh, frozen before any variant runs."
+  },
+  "divergent": {
+    "evidence_acquisition": "The baseline resumes from conversation memory and has no digest to bind against. The exitbind variant reads the recorded digest from the run ledger. The same oracle judges whichever evidence list is produced."
+  },
+  "threats_to_validity": [
+    "The baseline has no durable evidence record, so a resume may legitimately produce an empty evidence list; the oracle reports that as inconclusive rather than crediting or penalising it.",
+    "Process identity is not itself judged; only the resulting evidence bindings are."
+  ],
+  "fixtures": [
+    "fixtures/check.sh",
+    "fixtures/source.txt",
+    "fixtures/evidence.py"
+  ],
+  "run_status": "mechanically_runnable"
+}
