@@ -10,6 +10,8 @@
     "scenario_version",
     "scenario_digest",
     "product_commit",
+    "evaluator_commit",
+    "evaluator_tree",
     "variant",
     "host_model",
     "outcome",
@@ -34,20 +36,34 @@
       ]
     },
     "evaluator_commit": {"type": "string", "pattern": "^[a-f0-9]{40}$"},
+    "evaluator_tree": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["clean", "tree_digest", "dirty_paths"],
+      "properties": {
+        "clean": {"type": "boolean"},
+        "tree_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "dirty_paths": {"type": "array", "items": {"type": "string"}}
+      }
+    },
     "variant": {"enum": ["baseline", "exitbind", "fixture"]},
     "host_model": {"$ref": "#/$defs/measuredOrUnavailable"},
     "outcome": {"enum": ["pass", "fail", "inconclusive"]},
+    "result_kind": {"const": "fixture-scaffold"},
+    "is_product_result": {"const": false},
     "oracle": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "version", "verdict", "reads_product_state"],
+      "required": ["id", "version", "verdict", "reads_product_state", "implementation_digest"],
       "properties": {
         "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]+$"},
         "version": {"type": "integer", "minimum": 1},
         "verdict": {"enum": ["accept", "reject", "indeterminate"]},
-        "reads_product_state": {"type": "boolean"},
+        "reads_product_state": {"const": false},
+        "implementation_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "inputs_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
         "reason": {"type": "string", "minLength": 1},
-        "inputs_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+        "evidence_ref": {"type": "string", "minLength": 1}
       }
     },
     "reported_product_state": {"enum": ["READY", "REFUSED", "BLOCKED", "NOT_APPLICABLE", null]},

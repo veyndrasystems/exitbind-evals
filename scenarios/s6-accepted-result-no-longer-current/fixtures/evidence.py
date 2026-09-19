@@ -21,5 +21,12 @@ def fixture_evidence(scenario_dir: Path) -> dict:
         # The acceptance was recorded for an earlier revision of the tree.
         "accepted_digest": "1" * 64,
         "current_digest": current,
+        # A correct system no longer presents the stale acceptance as current.
         "still_claims_current": False,
+        # It does claim exit — so it must carry evidence bound to the current
+        # tree. Dropping the stale claim alone is not sufficient.
+        "exit_claimed": True,
+        "fresh_evidence": [
+            {"kind": "check", "bound_digest": current},
+        ],
     }

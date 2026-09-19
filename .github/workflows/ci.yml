@@ -40,16 +40,72 @@ jobs:
 
       - name: Run external-trust scenario suite (fixture variant)
         run: |
-          python3 runners/run_scenarios.py --variant fixture --out "$RUNNER_TEMP/scenario-results"
+          python3 runners/run_scenarios.py \
+            --variant fixture \
+            --evaluator-commit "$(git rev-parse HEAD)" \
+            --out "$RUNNER_TEMP/scenario-results"
           python3 - "$RUNNER_TEMP/scenario-results" <<'PY'
-          import json, pathlib, sys
-          summary = json.loads(pathlib.Path(sys.argv[1], "summary.json").read_text(encoding="utf-8"))
+          import glob, json, pathlib, sys
+          out = pathlib.Path(sys.argv[1])
+          summary = json.loads((out / "summary.json").read_text(encoding="utf-8"))
           assert summary["schema_version"] == "scenario-suite-v1", summary["schema_version"]
           assert summary["variant"] == "fixture", summary["variant"]
           assert summary["scenario_count"] > 0, "no scenarios found"
+          assert summary["is_product_result"] is False, summary["is_product_result"]
+          assert summary["result_kind"] == "fixture-scaffold", summary["result_kind"]
           bad = {k: v for k, v in summary["outcomes"].items() if v != "pass"}
           assert not bad, f"scenarios did not pass: {bad}"
-          print(f"scenario suite: {summary['scenario_count']} scenarios, all pass")
+          # Every evidence-bearing result must bind its evaluator revision and
+          # oracle implementation, and must never read product state.
+          sys.path.insert(0, "tools")
+          from export_public import validate_schema_document
+          schema = json.loads(pathlib.Path("schemas/scenario-result.schema.json").read_text())
+          for path in sorted(glob.glob(str(out / "*.json"))):
+              if path.endswith("summary.json"):
+                  continue
+              result = json.loads(pathlib.Path(path).read_text())
+              validate_schema_document(result, schema)
+              assert result["oracle"]["reads_product_state"] is False, path
+              assert result["is_product_result"] is False, path
+              assert len(result["oracle"]["implementation_digest"]) == 64, path
+              assert len(result["oracle"]["inputs_digest"]) == 64, path
+          print(f"scenario suite: {summary['scenario_count']} scenarios, all pass, provenance bound")
+          PY
+
+      - name: Take a governed-vs-ungoverned observation
+        run: |
+          python3 runners/run_observation.py \
+            --evaluator-commit "$(git rev-parse HEAD)" \
+            --space "$RUNNER_TEMP/observation" \
+            > "$RUNNER_TEMP/observation.json"
+          python3 - "$RUNNER_TEMP/observation.json" <<'PY'
+          import json, pathlib, sys
+          observation = json.loads(pathlib.Path(sys.argv[1]).read_text(encoding="utf-8"))
+          assert observation["schema_version"] == "observation-v2", observation["schema_version"]
+          assert set(observation["conditions"]) == {"ungoverned", "governed"}
+          ungoverned = observation["conditions"]["ungoverned"]
+          assert ungoverned["handle_exists"]["value"] is False, ungoverned
+          assert ungoverned["is_product_result"] is False, ungoverned
+          # Unavailable signals carry a reason and never a fabricated zero.
+          for condition in observation["conditions"].values():
+              for key, value in condition.items():
+                  if isinstance(value, dict) and value.get("status") == "unavailable":
+                      assert value.get("reason"), (key, value)
+                      assert "value" not in value, (key, value)
+          governed = observation["conditions"]["governed"]
+          if governed.get("status") == "unavailable":
+              assert governed["reason"], governed
+              print("observation: product absent, governed condition recorded unavailable")
+          else:
+              assert governed["handle_exists"]["value"] is True, governed
+              assert governed["records_are_hash_chained"]["value"] is True, governed
+              assert governed["contradicting_claim_was_refused"]["value"] is True, governed
+              assert governed["passing_check_alone_accepted"]["value"] is False, governed
+              assert governed["blocked_ledger_preserved"]["value"] is True, governed
+              print(
+                  f"observation: {governed['record_count']['value']} chained records, "
+                  f"refusal reason {governed['refusal_reason_recorded']['value']}"
+              )
           PY
 
       - name: harness self-test

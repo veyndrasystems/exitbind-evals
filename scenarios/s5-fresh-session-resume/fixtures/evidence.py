@@ -25,6 +25,10 @@ def fixture_evidence(scenario_dir: Path) -> dict:
         "reused_evidence": [
             {"kind": "check", "status": "passed", "bound_digest": "0" * 64},
         ],
-        # A correct resume re-acquires the check instead of reusing it.
-        "freshly_reacquired": ["check"],
+        # A correct resume re-acquires the check instead of reusing it, and the
+        # record proves the re-acquisition ran against the current subject —
+        # listing a kind is a claim, not evidence.
+        "freshly_reacquired": [
+            {"kind": "check", "executed": True, "bound_digest": current},
+        ],
     }

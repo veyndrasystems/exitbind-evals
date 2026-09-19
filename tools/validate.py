@@ -14,7 +14,9 @@ ROOT = Path(__file__).resolve().parents[1]
 HEX40 = re.compile(r"^[a-f0-9]{40}$")
 errors: list[str] = []
 sys.path.insert(0, str(ROOT / "tools"))
+sys.path.insert(0, str(ROOT / "scenarios"))
 from export_public import validate_schema_document
+from oracles import EVIDENCE_CONTRACTS, ORACLES, load_scenario
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("--public-export", type=Path, help="validate one public-export-v2 JSON artifact")
@@ -125,6 +127,8 @@ for scenario_path in scenario_paths:
         errors.append(f"{scenario_path}: adapter_required scenario needs a not_yet_run_reason")
     if scenario.get("run_status") == "NOT_YET_RUN" and not scenario.get("not_yet_run_reason"):
         errors.append(f"{scenario_path}: NOT_YET_RUN scenario needs a not_yet_run_reason")
+    if oracle.get("id") not in EVIDENCE_CONTRACTS:
+        errors.append(f"{scenario_path}: oracle {oracle.get('id')!r} has no declared evidence contract")
 
 # The frozen-command digest must match its own command text.
 frozen_path = (

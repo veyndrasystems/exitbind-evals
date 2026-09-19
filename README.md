@@ -128,10 +128,36 @@ The current corpus has 14 cases: seven adversarial families and a nearby valid
 control for each. It remains smaller than the eventual 40+ target because
 padding ungrounded mutations would make the result less credible.
 
+## External-trust scenarios
+
+`scenarios/` is a separate, newer track from the case corpus. Each scenario
+pairs a fixture with a variant-blind oracle that judges the recorded evidence
+rather than Exitbind's reported label, and declares which evidence fields it
+must actually consume. `EVAL_PROTOCOL.md` fixes the rules.
+
+A scenario run is runnable today only in its `fixture` variant, which exercises
+the scenario definition, its oracle, and the result schema. Fixture output
+carries `result_kind: "fixture-scaffold"` and `is_product_result: false`, so it
+cannot be read as a product result. The `baseline` and `exitbind` variants need
+host adapters that do not exist yet and are marked `NOT_YET_RUN` rather than
+estimated.
+
+`runners/run_observation.py` records what governing the evaluator's own work
+changes, under an Exitbind-managed handle versus without one. It is an
+observation of provenance and refusal structure, not a score, and it writes to
+a machine-local space outside this repository.
+
 ## Limitations
 
 - A passing fixture self-test proves only the evaluator's parsing, raw evidence,
   and aggregation paths.
+- A scenario run in the `fixture` variant proves the scenario, oracle, and
+  schema are mechanically sound. It is not a product result, and no live
+  `baseline` or `exitbind` variant has been run.
+- The observation space compares provenance and refusal structure between
+  governed and ungoverned evaluator work. It scores neither condition, is not
+  commensurable with any panel above, and establishes nothing about the
+  product's quality.
 - A candidate run measures only the supplied binary, adapter, environment, and
   pinned case set; it does not establish general agent compliance, code
   quality, adoption, human time saved, or production loss avoided.

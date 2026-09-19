@@ -31,6 +31,74 @@ Exitbind's own reported state may be *recorded* as an observation, but it can
 never be the criterion. A scenario where "Exitbind said READY" is the pass
 condition is not admissible.
 
+### 2.1 Material-field consumption
+
+An oracle must **consume** every field it relies on to decide. A field that
+appears in the evidence but never changes the verdict is not evidence; it is
+decoration, and an oracle that accepts it is validating the *shape* of a claim
+rather than the claim.
+
+Each oracle therefore declares an evidence contract in
+`scenarios/oracles.py`:
+
+- `material_fields` — fields the oracle must actually read. The field must be
+  present, and perturbing it must move the verdict.
+- `allow_missing` — fields that may legitimately be absent, each named
+  explicitly. Anything else missing is a contract violation, not a pass.
+- `nested` — material fields living inside a sub-object.
+- `compared_blocks` — sub-objects judged key-by-key rather than as a whole.
+
+`parse_evidence` enforces the contract at the owning boundary and fails
+closed: a contract violation makes the oracle abstain (`indeterminate`), never
+accept. `tests/test_scenarios.py` covers this with a mutation matrix that
+perturbs each declared material field and requires the verdict to move, so a
+new oracle that reads nothing cannot pass review silently.
+
+Fields an oracle may *observe* without deciding on are declared in
+`OBSERVED_ONLY_FIELDS`. Declaring a decorative field as material is a defect in
+the contract, not a passing test.
+
+### 2.2 Exit codes are integers, never booleans
+
+An oracle that reads an exit code must reject a boolean and demand a real
+integer. `False == 0` and `True == 1` in Python, so a record carrying
+`"executed_exit_code": false` would otherwise read as a passing zero. A field
+that *reads presence* — "did this happen" — may still test truthiness, because
+a `False` there means "it did not happen" and the oracle fails closed; the
+hazard applies only where a value is compared against a passing code.
+
+### 2.3 Proof, not assertion
+
+Where a scenario's claim is that something *executed*, the evidence must bind
+the execution — a runtime binding, a contract digest, a result artifact. A bare
+boolean asserting that it ran is supplied by the same caller that supplies the
+rest of the record and cannot distinguish a substitution that ran from one that
+was described. Prefer a field that would differ if the claim were false.
+
+### 2.4 Abstain, never crash
+
+Malformed evidence must produce `inconclusive`, not an exception. A raising
+oracle aborts the run and hides every other scenario's result, and a crash is
+not a verdict. Two boundaries hold this:
+
+- `validate_evidence` type-checks the shapes an oracle will operate on —
+  declared string fields, string lists, and lists of records — so a malformed
+  record is rejected with a reason naming the offending field;
+- `run_scenario` catches `BaseException` from the oracle itself and records the
+  scenario as `inconclusive`, so one unreadable evidence file cannot take down
+  the suite. `KeyboardInterrupt` and `SystemExit` are re-raised deliberately: a
+  run the host cancelled is not a run the oracle declined to judge, and
+  reporting it as `inconclusive` would misrepresent an unfinished run as a
+  finished one.
+
+A field an oracle tests for membership in a set is checked for its type first,
+on the same boundary the oracle's own return value is checked on. Otherwise a
+list or dict in that field raises inside the oracle — caught, but only after
+the record has already been misjudged as unreadable rather than malformed.
+
+The corresponding tests inject a raising oracle and a malformed record and
+assert the other scenarios still produce results.
+
 ## 3. Symmetry rules
 
 - Do **not** assume baseline must fail. A baseline that passes a scenario is a
@@ -79,6 +147,29 @@ Every result records:
 - the evaluator commit.
 
 A result that cannot be tied to those hashes is not evidence.
+
+An evidence-bearing run additionally refuses to start without an exact
+40-hex `--evaluator-commit`, and each result records:
+
+- `evaluator_tree` — whether the tree was clean, its digest, and any dirty
+  paths;
+- `oracle.implementation_digest` — the oracle code that produced the verdict;
+- `oracle.inputs_digest` — the evidence the oracle actually judged;
+- `oracle.evidence_ref` — a repository-relative pointer to that evidence.
+
+### 6.1 Observation of evaluator work
+
+`runners/run_observation.py` records what governing the evaluator's *own* work
+changes, by taking a paired observation of the same kind of work under an
+Exitbind-managed handle and without one. It writes
+`observation-v2` JSON to a machine-local space outside this repository
+(override with `EXITBIND_EVALS_OBSERVATION_SPACE`).
+
+An observation is not a result. It compares provenance and refusal structure,
+not pass rates: the two conditions exercise different work, so their outcomes
+are not commensurable and no score is computed from them. Any signal that
+cannot be established is recorded as `unavailable` with a reason and is never
+scored as zero.
 
 ## 7. Privacy
 
