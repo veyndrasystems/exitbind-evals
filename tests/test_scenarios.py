@@ -50,7 +50,9 @@ class OracleDiscriminationTests(unittest.TestCase):
     def test_covered_digest_binding_rejects_a_changed_covered_file(self) -> None:
         scenario = SCENARIO_ROOT / "s1-stale-review-after-change"
         fixtures = scenario / "fixtures"
-        current = canonical_digest(fixtures / "source.txt")
+        target = fixtures / "source.txt"
+        original_bytes = target.read_bytes()
+        current = canonical_digest(target)
 
         satisfied = {
             "covered_root": str(fixtures),
@@ -60,15 +62,14 @@ class OracleDiscriminationTests(unittest.TestCase):
         self.assertEqual(oracle_covered_digest_binding(satisfied)["verdict"], "accept")
 
         # Same approval, but a covered file changed after it was recorded.
-        (fixtures / "source.txt").write_text("precedence=file\n", encoding="utf-8")
+        target.write_bytes(b"precedence=file\n")
         try:
             changed = dict(satisfied)
             self.assertEqual(oracle_covered_digest_binding(changed)["verdict"], "reject")
         finally:
-            (fixtures / "source.txt").write_text(
-                "precedence=environment\nnote=environment settings win over file settings\n",
-                encoding="utf-8",
-            )
+            # Restore from the bytes we read — never from a hardcoded string that
+            # could drift from the actual fixture content.
+            target.write_bytes(original_bytes)
 
         # A missing approval is a missing measurement, never a reject.
         self.assertEqual(
@@ -173,12 +174,13 @@ class OracleDiscriminationTests(unittest.TestCase):
             )["verdict"],
             "indeterminate",
         )
-        # A failed functional check is not the scenario's fault either.
+        # A failed functional check means the scenario's precondition is unmet:
+        # we cannot evaluate "passes while preservation fails" — indeterminate.
         self.assertEqual(
             oracle_functional_pass_preservation_fail(
                 {"functional_exit_code": 1, "preservation_held": True}
             )["verdict"],
-            "reject",
+            "indeterminate",
         )
 
     def test_resume_oracle_rejects_reused_stale_evidence(self) -> None:

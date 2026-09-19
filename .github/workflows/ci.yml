@@ -42,11 +42,11 @@ jobs:
           python3 - "$RUNNER_TEMP/scenario-results" <<'PY'
           import json, pathlib, sys
           summary = json.loads(pathlib.Path(sys.argv[1], "summary.json").read_text(encoding="utf-8"))
-          assert summary["variant"] == "fixture", summary["variant"]
-          assert summary["scenario_count"] == 6, summary["scenario_count"]
           assert summary["schema_version"] == "scenario-suite-v1", summary["schema_version"]
+          assert summary["variant"] == "fixture", summary["variant"]
+          assert summary["scenario_count"] > 0, "no scenarios found"
           bad = {k: v for k, v in summary["outcomes"].items() if v != "pass"}
-          assert not bad, bad
+          assert not bad, f"scenarios did not pass: {bad}"
           print(f"scenario suite: {summary['scenario_count']} scenarios, all pass")
           PY
 

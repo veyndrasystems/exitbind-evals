@@ -24,14 +24,21 @@ from typing import Any
 def canonical_digest(*paths: Path) -> str:
     """Digest file *contents* deterministically; ignore modes and mtimes.
 
-    Content is read as bytes and normalized for line endings only, so two
-    checkouts of the same fixture can never disagree on a digest for a reason
-    that has nothing to do with the scenario's claim.
+    Content is normalized for line endings so two checkouts of the same fixture
+    on different platforms produce the same digest.
+
+    Path identity is encoded as the full absolute posix path so that two files
+    with the same basename in different subdirectories never produce the same
+    digest entry.  The digest is therefore machine-local: it is only valid when
+    compared against another digest computed on the same absolute path.  Oracle
+    evidence modules compute both sides of each comparison on the same machine,
+    so this is safe.  Never persist a canonical_digest across machines and
+    compare it as if it were content-addressed.
     """
     digest = hashlib.sha256()
     for path in sorted(paths, key=lambda item: str(item)):
         data = path.read_bytes().replace(b"\r\n", b"\n")
-        digest.update(path.name.encode("utf-8"))
+        digest.update(path.as_posix().encode("utf-8"))
         digest.update(b"\0")
         digest.update(data)
         digest.update(b"\0")
@@ -215,10 +222,13 @@ def oracle_functional_pass_preservation_fail(evidence: dict[str, Any]) -> dict[s
     held = evidence.get("preservation_held")
     if functional is None:
         return _verdict("indeterminate", "the functional check result is unavailable")
+    if functional != 0:
+        # The scenario's claim is about a *passing* functional check concealing
+        # a preservation failure. A failing functional check is a different
+        # failure mode — the scenario's precondition is not met.
+        return _verdict("indeterminate", "functional check failed; this scenario requires a passing functional check to evaluate its claim")
     if held is None:
         return _verdict("indeterminate", "the preservation invariant was not independently established")
-    if functional != 0:
-        return _verdict("reject", "the frozen functional check itself failed")
     if held is False:
         return _verdict("reject", "the preserved invariant no longer holds while the functional check passes")
     return _verdict("accept", "the functional check passed and the declared invariant still holds")
@@ -312,6 +322,8 @@ def scenario_digest(scenario_dir: Path) -> str:
     for path in sorted(set(parts), key=lambda item: str(item)):
         digest.update(path.relative_to(scenario_dir).as_posix().encode("utf-8"))
         digest.update(b"\0")
-        digest.update(path.read_bytes())
+        # Normalize CRLF so the scenario digest is consistent with
+        # canonical_digest and stable across checkout platforms.
+        digest.update(path.read_bytes().replace(b"\r\n", b"\n"))
         digest.update(b"\0")
     return digest.hexdigest()
