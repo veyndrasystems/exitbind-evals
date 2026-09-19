@@ -28,7 +28,9 @@ jobs:
         run: bash -n scripts/reproduce.sh runners/collect-environment runners/export-public runners/run-case runners/run-suite
 
       - name: Compile evaluator Python
-        run: python3 -m py_compile adapters/*.py runners/*.py tools/*.py tests/*.py scenarios/*/*.py scenarios/*/fixtures/*.py scenarios/*.py
+        run: |
+          python3 -m py_compile adapters/*.py runners/*.py tools/*.py tests/*.py
+          python3 -m py_compile scenarios/*.py scenarios/*/fixtures/*.py
 
       - name: Run evaluator tests
         run: python3 -m unittest discover -s tests -p 'test_*.py' -v
